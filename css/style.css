@@ -126,6 +126,10 @@
     font-weight: bold;
 }
 
+#link-eterj{
+    color: var(--main-color);
+}
+
 .description{
     max-width: 75%;
     margin-bottom: 10px;
