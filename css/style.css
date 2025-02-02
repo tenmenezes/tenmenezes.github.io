@@ -10,7 +10,7 @@
 /* Variaveis */
 
 :root {
-    --main-color: #54B689;
+    --main-color: #97312d;
     --main-text-color: #FFF;
     --border-color: #999;
     --bio-bg-color: #1E2A3A;
@@ -85,7 +85,7 @@
 
 #social-container li a{
     color: var(--main-color);
-    font-size: 30px;
+    font-size: 40px;
 }
 
 #email-container{
