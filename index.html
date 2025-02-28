@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!--CSS do projeto-->
     <link rel="stylesheet" href="css/style.css">
+    <!--Script do projeto-->
+    <script src="/meuPortfólio/javascript/script.js"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -20,7 +22,7 @@
 <body>
     <main id="container">
         <aside id="bio-container">
-            <h2>Yago Menezes</h2>
+            <h2 class="digit">Yago Menezes</h2>
             <img id="bio-img"src="img/yagoPort.jpg" alt="Foto de Yago Menezes">
             <p>Olá, meu nome é Yago Menezes e eu sou <span class="highlight">Técnico de Informática</span>.</p>
             <p id="welcome-text">Seja bem-vindo!</p>
@@ -79,6 +81,20 @@
                 </div>
             </div>
         </section>
+        <script>
+
+            function typeWriter(elemento) {
+                const textoArray = elemento.innerHTML.split('');
+                elemento.innerHTML = '';
+                textoArray.forEach((letra, i) => {
+                    setTimeout(() => elemento.innerHTML += letra, 100 * i)
+                });
+            }
+
+            typeWriter(document.querySelector('#name'))
+
+
+        </script>
     </main>
     <!--Ion Icons-->
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

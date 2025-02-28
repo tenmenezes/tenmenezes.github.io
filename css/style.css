@@ -5,7 +5,30 @@
     margin: 0;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.9s ease-out forwards;
 }
+  /* animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+  }
 
 /* Variaveis */
 
@@ -16,6 +39,7 @@
     --bio-bg-color: #1E2A3A;
     --bio-border-color: #293544;
     --about-bg-color: #111821;
+    --tittle-color: #3b9904;
 }
 
 /* Geral */
@@ -41,11 +65,19 @@
     border-right: 5px solid var(--bio-border-color);
 }
 
+
+
 #about-container{
     flex: 1 1 80%;
     min-height: 100%;
     background-color: var(--about-bg-color);
     padding: 50px;
+}
+
+#name::after {
+    content: '|';
+    opacity: 1;
+    animation: blink 0.8s infinite;
 }
 
 /* Bio Container */
