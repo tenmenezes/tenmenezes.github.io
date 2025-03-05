@@ -5,21 +5,9 @@
     margin: 0;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.9s ease-out forwards;
 }
+
   /* animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
   @keyframes blink {
     0%, 100% {
@@ -39,7 +27,6 @@
     --bio-bg-color: #1E2A3A;
     --bio-border-color: #293544;
     --about-bg-color: #111821;
-    --tittle-color: #3b9904;
 }
 
 /* Geral */
@@ -108,6 +95,35 @@
     border-bottom: 1px solid  var(--border-color);
     margin-bottom: 25px;
     padding-bottom: 25px;
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 0.1);
+}
+
+.iconHover:hover{
+    transform: scale(1.2);    
+}
+
+.iconHover:active{
+    transform: scale(0.8);
+}
+
+.icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.icon:active::after {
+    width: 100px;
+    height: 100px;
+    opacity: 1;
 }
 
 #social-container li{
