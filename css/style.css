@@ -27,6 +27,7 @@
     --bio-bg-color: #1E2A3A;
     --bio-border-color: #293544;
     --about-bg-color: #111821;
+    --link-color: #07659f;
 }
 
 /* Geral */
@@ -143,7 +144,7 @@
 }
 
 #email-container a:hover{
-    color: rgb(4, 92, 136);
+    color: var(--link-color);
 }
 
 #email-container ion-icon,
@@ -179,7 +180,8 @@
 }
 
 #link-eterj{
-    color: var(--main-color);
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 .description{
