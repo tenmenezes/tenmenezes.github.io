@@ -142,6 +142,10 @@
     align-items: center;
 }
 
+#email-container a:hover{
+    color: rgb(4, 92, 136);
+}
+
 #email-container ion-icon,
 #email-container a{
     display: inline-flex;
