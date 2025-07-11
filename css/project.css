@@ -29,14 +29,6 @@ h2 {
   color: var(--main-text-color);
 }
 
-header {
-  background: linear-gradient(270deg, #7b2926, #99332e, #bb3a33, #982f2a, #7b2926);
-  background-size: 1000% 1000%;
-  animation: gradientShift 5s ease infinite;
-  color: white;
-  padding: 4rem 1rem;
-}
-
 i {
   font-size: 30px;
 }
@@ -61,14 +53,15 @@ i {
     background-position: 0% 50%;
   }
 }
+
 /* Navbar mantém bg-dark e navbar-dark do Bootstrap */
 
-/* Estilização doHeader */
+/* Estilização do Header */
 
 .custom-header {
   background: linear-gradient(270deg, #1e2a3a, #2d3e50, #1e2a3a);
   background-size: 600% 600%;
-  animation: gradientShift 15s ease infinite;
+  animation: gradientShift 5s ease infinite;
   color: white;
 }
 
