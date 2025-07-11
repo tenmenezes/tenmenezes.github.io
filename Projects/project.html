@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portfólio | Yago Menezes</title>
 
+  <!--Dev Icon Fonts-->
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"/>  
+  
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
@@ -30,12 +33,13 @@
     </div>
   </nav>
 
-  <!-- HEADER -->
-  <header class="bg-primary text-white text-center p-5">
-    <h1>Projetos de <span style="color:rgba(87, 5, 5, 0.684);">Yago Menezes</span></h1>
-    <p>Desenvolvedor <span style="color:rgba(87, 5, 5, 0.684);">Web & Back-End</span></p>
-  </header>
-
+  <!-- HEADER MELHORADO -->
+<header class="custom-header text-white text-center p-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">Projetos de Yago Menezes</h1>
+    <p class="lead">Desenvolvedor <span class="highlight">Web & Back-End</span></p>
+  </div>
+</header>
   <!-- CONTEÚDO PRINCIPAL -->
   <main class="container mt-5">
     <!-- PROJETOS WEB -->
@@ -68,10 +72,10 @@
       <!-- Abas -->
       <ul class="nav nav-tabs" id="backendTabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="csharp-tab" data-bs-toggle="tab" data-bs-target="#csharp" type="button" role="tab">C# / .NET</button>
+          <button class="nav-link active" id="csharp-tab" data-bs-toggle="tab" data-bs-target="#csharp" type="button" role="tab"><i class="devicon-csharp-plain colored"></i></button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="java-tab" data-bs-toggle="tab" data-bs-target="#java" type="button" role="tab">Java</button>
+          <button class="nav-link" id="java-tab" data-bs-toggle="tab" data-bs-target="#java" type="button" role="tab"><i class="devicon-java-plain colored"></i></button>
         </li>
       </ul>
 

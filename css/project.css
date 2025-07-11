@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  animation: fadeIn 1s ease-in-out; /* Animação de fade-in */
 }
 
 body {
@@ -36,6 +37,19 @@ header {
   padding: 4rem 1rem;
 }
 
+i {
+  font-size: 30px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -48,6 +62,30 @@ header {
   }
 }
 /* Navbar mantém bg-dark e navbar-dark do Bootstrap */
+
+/* Estilização doHeader */
+
+.custom-header {
+  background: linear-gradient(270deg, #1e2a3a, #2d3e50, #1e2a3a);
+  background-size: 600% 600%;
+  animation: gradientShift 15s ease infinite;
+  color: white;
+}
+
+.custom-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+.custom-header p {
+  font-size: 1.2rem;
+}
+
+.highlight {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
 
 /* Cards */
 .card {
