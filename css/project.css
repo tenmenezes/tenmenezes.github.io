@@ -1,0 +1,164 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: var(--about-bg-color); /* #111821 */
+  color: var(--main-text-color); /* branco */
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Faz o main ocupar todo espaço disponível */
+}
+
+h2 {
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-color); /* #999 */
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  color: var(--main-text-color);
+}
+
+header {
+  background: linear-gradient(270deg, #7b2926, #99332e, #bb3a33, #982f2a, #7b2926);
+  background-size: 1000% 1000%;
+  animation: gradientShift 5s ease infinite;
+  color: white;
+  padding: 4rem 1rem;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* Navbar mantém bg-dark e navbar-dark do Bootstrap */
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 10px;
+  background-color: var(--bio-bg-color); /* #1E2A3A */
+  box-shadow: none; /* sombra removida conforme pedido */
+  transition: transform 0.2s ease-in-out;
+  text-align: center;
+  color: var(--main-text-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Botões dentro do card (flex row, space-between) */
+.card-body > .d-flex {
+  justify-content: space-between;
+}
+
+/* Botões */
+.btn {
+  min-width: 120px;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--main-text-color);
+  background-color: var(--main-color); /* #97312d */
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.btn:hover, .btn:focus {
+  background-color: transparent;
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+/* Abas Back-End */
+.nav-tabs .nav-link {
+  color: var(--main-text-color);
+  background-color: var(--bio-bg-color);
+  border: 1px solid var(--bio-border-color);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--main-color);
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+
+/* Conteúdo das abas */
+.tab-content {
+  background-color: var(--bio-bg-color);
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--bio-border-color);
+  box-shadow: none;
+  padding: 1rem;
+  color: var(--main-text-color);
+}
+
+/* Centralizar textos nos parágrafos back-end */
+#backendTabsContent p {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--main-text-color);
+}
+
+/* Centraliza os títulos das seções de projetos */
+#web h2,
+#backend h2 {
+  text-align: center;
+}
+
+
+/* Container dos botões back-end */
+#backendTabsContent .d-flex {
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Rodapé */
+footer {
+  display: flex;           /* Ativa flexbox */
+  justify-content: center;   /* Centraliza horizontalmente */
+  align-items: center;       /* Centraliza verticalmente */
+  min-height: 60px;          /* Altura mínima para o footer, opcional */
+  background-color: #212529;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  width: 100%;
+
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+  }
+}
