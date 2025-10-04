@@ -7,6 +7,7 @@ export const siteConfig = {
     email: "yago.ten.menezes@outlook.com",
     linkedin: "https://linkedin.com/in/ten-menezes",
     github: "https://github.com/tenmenezes",
+    curriculo: "/others/Curriculo-YagoMenezes.pdf",
   },
   aboutMe:
     "Sou estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia e programação. Gosto de criar sistemas web modernos, sistemas back-end e explorar novas ferramentas que me ajudam a evoluir como desenvolvedor.",
@@ -25,20 +26,6 @@ export const siteConfig = {
   ],
   projects: [
     {
-      name: "4Players WebSite",
-      description:
-        "Projeto web desenvolvido como projeto de primeiro período da universidade, reponsividade completa, acessibilidade e LocalStorage.",
-      link: "https://tenmenezes/4Players",
-      skills: ["HTML", "CSS", "Bootstrap", "JavaScript"],
-    },
-    {
-      name: "Jogo de Xadrez em Console",
-      description:
-        "Jogo de Xadrez desenvolvido em C# com .NET Framework, feito para demonstrar habilidades práticas em programação orientada a objetos e lógica.",
-      link: "https://github.com/tenmenezes/Project-Xadrez-Console",
-      skills: ["C#", ".NET Framework", "Orientação a Objetos"],
-    },
-    {
       name: "Nexus SixTech WebSite Completo",
       description:
         "Sistema web completo ainda em desenvolvimento, com dashboard administrativo, e um sistema completo de administrador, conectividade com banco físico, será passado para banco em nuvem futuramente.",
@@ -52,6 +39,20 @@ export const siteConfig = {
         "PHP",
         "MySql",
       ],
+    },
+    {
+      name: "4Players WebSite",
+      description:
+        "Projeto web desenvolvido como projeto de primeiro período da universidade, responsividade completa, acessibilidade e LocalStorage.",
+      link: "https://tenmenezes/4Players",
+      skills: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+    },
+    {
+      name: "Jogo de Xadrez em Console",
+      description:
+        "Jogo de Xadrez desenvolvido em C# com .NET Framework, feito para demonstrar habilidades práticas em programação orientada a objetos e lógica.",
+      link: "https://github.com/tenmenezes/Project-Xadrez-Console",
+      skills: ["C#", ".NET Framework", "Orientação a Objetos"],
     },
   ],
   experience: [

@@ -134,12 +134,12 @@ import { siteConfig } from "../config";
       <h2
         class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
       >
-        Hello! 👋
+        Olá, seja Bem-vindo(a)! 👋
       </h2>
       <h1
         class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
       >
-        I'm <span style={{ color: siteConfig.accentColor }}
+        Sou <span style={{ color: siteConfig.accentColor }}
           >{siteConfig.name}</span
         >
       </h1>
@@ -213,36 +213,6 @@ import { siteConfig } from "../config";
       )
     }
     {
-      siteConfig.social?.twitter && (
-        <a
-          href={siteConfig.social.twitter}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Twitter"
-          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
-          >
-            <>
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-              <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-            </>
-          </svg>
-        </a>
-      )
-    }
-    {
       siteConfig.social?.github && (
         <a
           href={siteConfig.social.github}
@@ -267,6 +237,33 @@ import { siteConfig } from "../config";
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
             </>
+          </svg>
+        </a>
+      )
+    }
+    {
+      siteConfig.social?.curriculo && (
+        <a
+          href={siteConfig.social.curriculo}
+          download
+          aria-label="Currículo"
+          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 3v12m0 0l-4-4m4 4l4-4" /> <!-- seta para download -->
+            <path d="M4 19h16v2H4z" /> <!-- linha base do documento -->
           </svg>
         </a>
       )
