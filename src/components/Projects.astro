@@ -1,5 +1,5 @@
 ---
-import { siteConfig } from "../config";
+import { siteConfig, skillIconsMap } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 ---
 
@@ -81,10 +81,14 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                             {project.skills.map((skill) => (
                               <span
-                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                                  project.link ? "group-hover:bg-gray-800" : ""
-                                }`}
+                                class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                               >
+                                <img
+                                  src={`/icons/${skillIconsMap[skill] || skill}.svg`}
+                                  loading="lazy"
+                                  alt={skill}
+                                  class="w-4 h-4 sm:w-5 sm:h-5"
+                                />
                                 {skill}
                               </span>
                             ))}

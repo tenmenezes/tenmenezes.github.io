@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Yago Menezes",
   title: "Web & Back-End Developer",
   description: "Portfolio website de Yago Menezes",
-  accentColor: "#1d4ed8",
+  accentColor: "#0a35acff",
   social: {
     email: "yago.ten.menezes@outlook.com",
     linkedin: "https://linkedin.com/in/ten-menezes",
@@ -15,44 +15,66 @@ export const siteConfig = {
     "HTML",
     "CSS",
     "Bootstrap",
+    "Astro",
+    "Tailwind.css",
+    "Chart.js",
     "Javascript",
     "PHP",
-    "C#.NET",
+    "Laravel",
+    "C#",
+    ".NET Framework",
     "MySql",
     "PostgreSQL",
     "Linux",
     "Git",
     "Github",
+    "Lógica de Programação",
+    "Orientação a Objetos",
   ],
   projects: [
     {
-      name: "Nexus SixTech WebSite Completo",
+      name: "Nexus SixTech WebSite",
       description:
         "Sistema web completo ainda em desenvolvimento, com dashboard administrativo, e um sistema completo de administrador, conectividade com banco físico, será passado para banco em nuvem futuramente.",
       link: "https://github.com/tenmenezes/Nexus_SixTech",
       skills: [
         "HTML",
         "CSS",
-        "Animate.css / Tailwind.css",
+        "Tailwind.css",
         "Javascript",
         "Chart.js",
         "PHP",
+        "Laravel",
         "MySql",
+        "Git",
       ],
     },
     {
       name: "4Players WebSite",
       description:
-        "Projeto web desenvolvido como projeto de primeiro período da universidade, responsividade completa, acessibilidade e LocalStorage.",
-      link: "https://tenmenezes/4Players",
-      skills: ["HTML", "CSS", "Bootstrap", "JavaScript"],
+        "WebSite desenvolvido como projeto de primeiro período da universidade, responsividade completa, acessibilidade e LocalStorage.",
+      link: "https://tenmenezes.github.io/4Players",
+      skills: [
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "Javascript",
+        "Lógica de Programação",
+        "Git",
+      ],
     },
     {
       name: "Jogo de Xadrez em Console",
       description:
         "Jogo de Xadrez desenvolvido em C# com .NET Framework, feito para demonstrar habilidades práticas em programação orientada a objetos e lógica.",
       link: "https://github.com/tenmenezes/Project-Xadrez-Console",
-      skills: ["C#", ".NET Framework", "Orientação a Objetos"],
+      skills: [
+        "C#",
+        ".NET Framework",
+        "Lógica de Programação",
+        "Orientação a Objetos",
+        "Git",
+      ],
     },
   ],
   experience: [
@@ -70,7 +92,7 @@ export const siteConfig = {
   education: [
     {
       school: "Centro Universitário Augusto Motta (UNISUAM)",
-      degree: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+      degree: "Tecnólogo - Análise e Desenvolvimento de Sistemas",
       dateRange: "2025 - 2027",
       achievements: [
         "Projetos acadêmicos focados em desenvolvimento web e mobile",
@@ -89,4 +111,25 @@ export const siteConfig = {
       ],
     },
   ],
+};
+
+export const skillIconsMap: Record<string, string> = {
+  "HTML": "html",
+  "CSS": "css",
+  "Bootstrap": "bootstrap",
+  "Astro": "astro",
+  "Tailwind.css": "tailwind",
+  "Chart.js": "chartjs",
+  "Javascript": "javascript",
+  "PHP": "php",
+  "Laravel": "laravel",
+  "C#": "csharp",
+  ".NET Framework": "dotnet",
+  "MySql": "mysql",
+  "PostgreSQL": "postgresql",
+  "Linux": "linux",
+  "Git": "git",
+  "Github": "github",
+  "Lógica de Programação": "logica",
+  "Orientação a Objetos": "poo",
 };
