@@ -1,56 +1,38 @@
-# Portfólio de Yago Menezes
+# Yago Menezes
 
 [![GitHub followers](https://img.shields.io/github/followers/tenmenezes?style=social)](https://github.com/tenmenezes)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yago%20Menezes-blue)](https://www.linkedin.com/in/tenmenezes/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Yago%20Menezes-blue)](https://www.linkedin.com/in/ten-menezes/)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Online-97312d)](https://tenmenezes.github.io)
 
 ---
 
 ## Olá! 👋
 
-Eu sou **Yago Menezes**, desenvolvedor focado em **Web Development** e **Back-End**, apaixonado por transformar ideias em aplicações funcionais e modernas.
+Sou **Yago Menezes**, desenvolvedor apaixonado por **tecnologia e inovação**. Gosto de transformar ideias em soluções digitais, seja na criação de sites modernos e responsivos ou em sistemas back-end robustos.
 
-Este repositório é a base do meu portfólio pessoal onde você pode conferir meus projetos, habilidades e experiências.
-
----
-
-## 🚀 Projetos em destaque
-
-### 🌐 Projetos Web
-- Sites responsivos e interativos utilizando HTML, CSS, JavaScript e frameworks modernos.
-  
-### 🧠 Projetos Back-End
-- APIs e sistemas robustos desenvolvidos em C# (.NET) e Java.
-- Integração com bancos de dados e serviços futuramente.
+Meu foco é **aprender constantemente**, experimentar novas ferramentas e entregar código **limpo, funcional e de qualidade**.
 
 ---
 
-## 💻 Tecnologias e Ferramentas
+## 🌟 Sobre mim
 
-- **Front-End:** HTML5 | CSS3 | JavaScript | Bootstrap
-- **Back-End:** C# | Java | .Net Framework
-- **Versionamento:** Git | GitHub
-- **Outros:** VS Code | VS Community | Intelij IDEA
-
----
-
-## 📫 Como me encontrar
-
-- [GitHub](https://github.com/tenmenezes)
-- [LinkedIn](https://www.linkedin.com/in/ten-menezes/)
-- [Portfólio Online](https://tenmenezes.github.io)
+- Estudante de **Análise e Desenvolvimento de Sistemas**  
+- Entusiasta de **desenvolvimento web e back-end**, com experiência em C#, .NET, JavaScript e PHP  
+- Acredito que **boa tecnologia conecta pessoas e resolve problemas reais**  
 
 ---
 
-## 🎯 Objetivo
+## 🔗 Onde me encontrar
 
-Meu objetivo é continuar aprendendo e entregando soluções que agreguem valor real aos projetos em que trabalho, mantendo sempre um código limpo, eficiente e documentado.
+- [GitHub](https://github.com/tenmenezes)  
+- [LinkedIn](https://www.linkedin.com/in/ten-menezes/)  
+- [Portfólio Online](https://tenmenezes.github.io)  
 
 ---
 
-## 🙌 Agradecimentos
+## 🎯 Minha missão
 
-Obrigado pela visita ao meu portfólio! Sinta-se à vontade para explorar os projetos e entrar em contato.
+Criar soluções digitais que sejam **úteis, elegantes e eficientes**, mantendo o aprendizado constante e contribuindo para projetos que realmente impactem pessoas e empresas.
 
 ---
 
