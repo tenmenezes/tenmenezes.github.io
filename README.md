@@ -24,7 +24,6 @@ Meu foco é **aprender constantemente**, experimentar novas ferramentas e entreg
 
 ## 🔗 Onde me encontrar
 
-- [GitHub](https://github.com/tenmenezes)  
 - [LinkedIn](https://www.linkedin.com/in/ten-menezes/)  
 - [Portfólio Online](https://tenmenezes.github.io)  
 
