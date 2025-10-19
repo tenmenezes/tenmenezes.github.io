@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Yago Menezes",
   title: "Web & Back-End Developer",
   description: "Portfolio website de Yago Menezes",
-  accentColor: "#0a35acff",
+  accentColor: "#092f97",
   social: {
     email: "yago.ten.menezes@outlook.com",
     linkedin: "https://linkedin.com/in/ten-menezes",

@@ -10,7 +10,7 @@ import { siteConfig } from "../config";
   <!-- Gradient overlay -->
   <div
     class="absolute inset-0 -z-10"
-    style={`background: radial-gradient(ellipse 800px 1200px at 0% 0%, ${siteConfig.accentColor}40 0%, ${siteConfig.accentColor}25 20%, ${siteConfig.accentColor}10 40%, rgba(255, 255, 255, 0.3) 70%, rgba(255, 255, 255, 0.8) 90%, white 100%)`}
+    style={`background: radial-gradient(ellipse 800px 1200px at 0% 50%, rgba(10,53,172,0.25) 0%, rgba(10,53,172,0.15) 20%, rgba(10,53,172,0.05) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0.8) 90%, white 100%)`}
   >
   </div>
   <svg
@@ -158,6 +158,7 @@ import { siteConfig } from "../config";
         <a
           href={`mailto:${siteConfig.social.email}`}
           aria-label="Email"
+          title="E-mail"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
@@ -186,6 +187,7 @@ import { siteConfig } from "../config";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
+          title="LinkedIn"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
@@ -219,6 +221,7 @@ import { siteConfig } from "../config";
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
+          title="GitHub"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
@@ -247,6 +250,7 @@ import { siteConfig } from "../config";
           href={siteConfig.social.curriculo}
           download
           aria-label="Currículo"
+          title="Meu Currículo"
           class="transition-colors duration-300 hover:text-[var(--accent-color)]"
         >
           <svg
