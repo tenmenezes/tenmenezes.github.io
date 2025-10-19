@@ -82,7 +82,7 @@ export const siteConfig = {
   experience: [
     {
       company: "Projetos Pessoais e Acadêmicos",
-      title: "Web, Back-End & Mobile Developer",
+      title: "Web & Back-End Developer",
       dateRange: "2022 - Presente",
       bullets: [
         "Atualmente desenvolvendo o projeto NextBlog, um blog moderno com Next.js 15+, autenticação e CMS integrado como parte do curso 'Next.js do Zero ao Avançado' (Udemy - Matheus Battisti).",
@@ -130,25 +130,25 @@ export const siteConfig = {
 };
 
 export const skillIconsMap: Record<string, string> = {
-  HTML: "html",
-  CSS: "css",
-  Bootstrap: "bootstrap",
-  Astro: "astro",
+  "HTML": "html",
+  "CSS": "css",
+  "Bootstrap": "bootstrap",
+  "Astro": "astro",
   "React.js": "react",
   "Next.js": "next",
   "Ionic Framework": "ionic",
-  Tailwind: "tailwind",
+  "Tailwind": "tailwind",
   "Chart.js": "chartjs",
-  Javascript: "javascript",
-  PHP: "php",
+  "Javascript": "javascript",
+  "PHP": "php",
   "C#": "csharp",
-  Java: "java",
+  "Java": "java",
   ".NET Framework": "dotnet",
-  MySql: "mysql",
-  PostgreSQL: "postgresql",
-  Linux: "linux",
-  Git: "git",
-  Github: "github",
+  "MySql": "mysql",
+  "PostgreSQL": "postgresql",
+  "Linux": "linux",
+  "Git": "git",
+  "Github": "github",
   "Lógica de Programação": "logica",
   "Orientação a Objetos": "poo",
 };
