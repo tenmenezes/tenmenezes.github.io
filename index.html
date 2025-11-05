@@ -3,7 +3,13 @@
 <script>
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "system") {
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+      return savedTheme;
     }
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
@@ -11,17 +17,6 @@
   };
   const isDark = getThemePreference() === "dark";
   document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
 </script>
 <html lang="pt-br">
   <head>
@@ -37,23 +32,26 @@
       rel="stylesheet"
     />
     <title>Yago Menezes - Front / Back-End &amp; Full Stack Developer</title>
-    <link rel="stylesheet" href="./assets/index.PuLnTWzy.css" />
+    <link rel="stylesheet" href="./assets/index.C9Dau76j.css" />
   </head>
-  <body>
+  <body class="bg-white dark:bg-gray-900 transition-colors duration-300">
     <header
       id="header"
       class="fixed top-0 left-0 right-0 z-50 hidden md:block transition-all duration-300"
       data-astro-cid-3ef6ksr2
     >
-      <nav class="max-w-7xl mx-auto px-8 py-4" data-astro-cid-3ef6ksr2>
+      <nav
+        class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between"
+        data-astro-cid-3ef6ksr2
+      >
         <ul
-          class="flex items-center gap-8 justify-center"
+          class="flex items-center gap-8 justify-center flex-1"
           data-astro-cid-3ef6ksr2
         >
           <li data-astro-cid-3ef6ksr2>
             <a
               href="#about"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
               Sobre
@@ -62,7 +60,7 @@
           <li data-astro-cid-3ef6ksr2>
             <a
               href="#projects"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
               Projetos
@@ -71,7 +69,7 @@
           <li data-astro-cid-3ef6ksr2>
             <a
               href="#experience"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
               Experiência
@@ -80,49 +78,396 @@
           <li data-astro-cid-3ef6ksr2>
             <a
               href="#education"
-              class="text-gray-700 hover:text-black transition-colors font-medium"
+              class="text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
               Formação
             </a>
           </li>
         </ul>
+        <!-- Toggle de tema no Header -->
+        <div class="ml-4 flex items-center" data-astro-cid-3ef6ksr2>
+          <style>
+            astro-island,
+            astro-slot,
+            astro-static-slot {
+              display: contents;
+            }
+          </style>
+          <script>
+            (() => {
+              var e = async (t) => {
+                await (
+                  await t()
+                )();
+              };
+              (self.Astro || (self.Astro = {})).load = e;
+              window.dispatchEvent(new Event("astro:load"));
+            })();
+          </script>
+          <script>
+            (() => {
+              var A = Object.defineProperty;
+              var g = (i, o, a) =>
+                o in i
+                  ? A(i, o, {
+                      enumerable: !0,
+                      configurable: !0,
+                      writable: !0,
+                      value: a,
+                    })
+                  : (i[o] = a);
+              var d = (i, o, a) => g(i, typeof o != "symbol" ? o + "" : o, a);
+              {
+                let i = {
+                    0: (t) => m(t),
+                    1: (t) => a(t),
+                    2: (t) => new RegExp(t),
+                    3: (t) => new Date(t),
+                    4: (t) => new Map(a(t)),
+                    5: (t) => new Set(a(t)),
+                    6: (t) => BigInt(t),
+                    7: (t) => new URL(t),
+                    8: (t) => new Uint8Array(t),
+                    9: (t) => new Uint16Array(t),
+                    10: (t) => new Uint32Array(t),
+                    11: (t) => (1 / 0) * t,
+                  },
+                  o = (t) => {
+                    let [l, e] = t;
+                    return l in i ? i[l](e) : void 0;
+                  },
+                  a = (t) => t.map(o),
+                  m = (t) =>
+                    typeof t != "object" || t === null
+                      ? t
+                      : Object.fromEntries(
+                          Object.entries(t).map(([l, e]) => [l, o(e)])
+                        );
+                class y extends HTMLElement {
+                  constructor() {
+                    super(...arguments);
+                    d(this, "Component");
+                    d(this, "hydrator");
+                    d(this, "hydrate", async () => {
+                      var b;
+                      if (!this.hydrator || !this.isConnected) return;
+                      let e =
+                        (b = this.parentElement) == null
+                          ? void 0
+                          : b.closest("astro-island[ssr]");
+                      if (e) {
+                        e.addEventListener("astro:hydrate", this.hydrate, {
+                          once: !0,
+                        });
+                        return;
+                      }
+                      let c = this.querySelectorAll("astro-slot"),
+                        n = {},
+                        h = this.querySelectorAll(
+                          "template[data-astro-template]"
+                        );
+                      for (let r of h) {
+                        let s = r.closest(this.tagName);
+                        s != null &&
+                          s.isSameNode(this) &&
+                          ((n[
+                            r.getAttribute("data-astro-template") || "default"
+                          ] = r.innerHTML),
+                          r.remove());
+                      }
+                      for (let r of c) {
+                        let s = r.closest(this.tagName);
+                        s != null &&
+                          s.isSameNode(this) &&
+                          (n[r.getAttribute("name") || "default"] =
+                            r.innerHTML);
+                      }
+                      let p;
+                      try {
+                        p = this.hasAttribute("props")
+                          ? m(JSON.parse(this.getAttribute("props")))
+                          : {};
+                      } catch (r) {
+                        let s =
+                            this.getAttribute("component-url") || "<unknown>",
+                          v = this.getAttribute("component-export");
+                        throw (
+                          (v && (s += ` (export ${v})`),
+                          console.error(
+                            `[hydrate] Error parsing props for component ${s}`,
+                            this.getAttribute("props"),
+                            r
+                          ),
+                          r)
+                        );
+                      }
+                      let u;
+                      await this.hydrator(this)(this.Component, p, n, {
+                        client: this.getAttribute("client"),
+                      }),
+                        this.removeAttribute("ssr"),
+                        this.dispatchEvent(new CustomEvent("astro:hydrate"));
+                    });
+                    d(this, "unmount", () => {
+                      this.isConnected ||
+                        this.dispatchEvent(new CustomEvent("astro:unmount"));
+                    });
+                  }
+                  disconnectedCallback() {
+                    document.removeEventListener(
+                      "astro:after-swap",
+                      this.unmount
+                    ),
+                      document.addEventListener(
+                        "astro:after-swap",
+                        this.unmount,
+                        { once: !0 }
+                      );
+                  }
+                  connectedCallback() {
+                    if (
+                      !this.hasAttribute("await-children") ||
+                      document.readyState === "interactive" ||
+                      document.readyState === "complete"
+                    )
+                      this.childrenConnectedCallback();
+                    else {
+                      let e = () => {
+                          document.removeEventListener("DOMContentLoaded", e),
+                            c.disconnect(),
+                            this.childrenConnectedCallback();
+                        },
+                        c = new MutationObserver(() => {
+                          var n;
+                          ((n = this.lastChild) == null
+                            ? void 0
+                            : n.nodeType) === Node.COMMENT_NODE &&
+                            this.lastChild.nodeValue === "astro:end" &&
+                            (this.lastChild.remove(), e());
+                        });
+                      c.observe(this, { childList: !0 }),
+                        document.addEventListener("DOMContentLoaded", e);
+                    }
+                  }
+                  async childrenConnectedCallback() {
+                    let e = this.getAttribute("before-hydration-url");
+                    e && (await import(e)), this.start();
+                  }
+                  async start() {
+                    let e = JSON.parse(this.getAttribute("opts")),
+                      c = this.getAttribute("client");
+                    if (Astro[c] === void 0) {
+                      window.addEventListener(
+                        `astro:${c}`,
+                        () => this.start(),
+                        { once: !0 }
+                      );
+                      return;
+                    }
+                    try {
+                      await Astro[c](
+                        async () => {
+                          let n = this.getAttribute("renderer-url"),
+                            [h, { default: p }] = await Promise.all([
+                              import(this.getAttribute("component-url")),
+                              n ? import(n) : () => () => {},
+                            ]),
+                            u =
+                              this.getAttribute("component-export") ||
+                              "default";
+                          if (!u.includes(".")) this.Component = h[u];
+                          else {
+                            this.Component = h;
+                            for (let f of u.split("."))
+                              this.Component = this.Component[f];
+                          }
+                          return (this.hydrator = p), this.hydrate;
+                        },
+                        e,
+                        this
+                      );
+                    } catch (n) {
+                      console.error(
+                        `[astro-island] Error hydrating ${this.getAttribute(
+                          "component-url"
+                        )}`,
+                        n
+                      );
+                    }
+                  }
+                  attributeChangedCallback() {
+                    this.hydrate();
+                  }
+                }
+                d(y, "observedAttributes", ["props"]),
+                  customElements.get("astro-island") ||
+                    customElements.define("astro-island", y);
+              }
+            })();
+          </script>
+          <astro-island
+            uid="IgdMN"
+            prefix="r2"
+            component-url="./assets/ModeToggle.CTYNnkFx.js"
+            component-export="ModeToggle"
+            renderer-url="./assets/client.DENxYI95.js"
+            props='{"data-astro-cid-3ef6ksr2":[0,true]}'
+            ssr
+            client="load"
+            opts='{"name":"ModeToggle","value":true}'
+            await-children
+            ><button
+              data-slot="dropdown-menu-trigger"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:text-gray-200 size-9 border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700"
+              type="button"
+              id="radix-_r2R_0_"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              data-state="closed"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-sun h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90 text-black dark:text-gray-200"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path></svg
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-moon absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 text-black dark:text-gray-200"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+                ></path></svg
+              ><span class="sr-only">Toggle theme</span></button
+            ><!--astro:end--></astro-island
+          >
+        </div>
       </nav>
     </header>
     <script type="module">
       window.addEventListener("scroll", () => {
         const e = document.getElementById("header");
         window.scrollY > 100
-          ? e?.classList.add("bg-white/80", "backdrop-blur-sm")
-          : e?.classList.remove("bg-white/80", "backdrop-blur-sm");
+          ? e?.classList.add(
+              "bg-white/80",
+              "dark:bg-gray-900/80",
+              "backdrop-blur-sm"
+            )
+          : e?.classList.remove(
+              "bg-white/80",
+              "dark:bg-gray-900/80",
+              "backdrop-blur-sm"
+            );
       });
     </script>
     <section>
       <div
         id="hero"
-        class="relative isolate overflow-hidden bg-white py-24 md:h-screen"
+        class="relative isolate overflow-hidden bg-white dark:bg-gray-900 py-24 md:h-screen"
         style="--accent-color: #092f97"
         data-astro-cid-bbe6dxrz
       >
+        <!-- Toggle de tema no canto superior direito (visível apenas em mobile onde header está oculto) -->
+        <div
+          class="absolute top-4 right-4 sm:top-6 sm:right-6 md:hidden z-[100]"
+          data-astro-cid-bbe6dxrz
+        >
+          <astro-island
+            uid="CeMRj"
+            prefix="r3"
+            component-url="./assets/ModeToggle.CTYNnkFx.js"
+            component-export="ModeToggle"
+            renderer-url="./assets/client.DENxYI95.js"
+            props='{"data-astro-cid-bbe6dxrz":[0,true]}'
+            ssr
+            client="load"
+            opts='{"name":"ModeToggle","value":true}'
+            await-children
+            ><button
+              data-slot="dropdown-menu-trigger"
+              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:text-gray-200 size-9 border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-700"
+              type="button"
+              id="radix-_r3R_0_"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              data-state="closed"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-sun h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90 text-black dark:text-gray-200"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2"></path>
+                <path d="M12 20v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="m17.66 17.66 1.41 1.41"></path>
+                <path d="M2 12h2"></path>
+                <path d="M20 12h2"></path>
+                <path d="m6.34 17.66-1.41 1.41"></path>
+                <path d="m19.07 4.93-1.41 1.41"></path></svg
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-moon absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 text-black dark:text-gray-200"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"
+                ></path></svg
+              ><span class="sr-only">Toggle theme</span></button
+            ><!--astro:end--></astro-island
+          >
+        </div>
         <!-- Gradient overlay -->
         <div
-          class="absolute inset-0 -z-10"
-          style="
-            background: radial-gradient(
-              ellipse 800px 1200px at 0% 50%,
-              rgba(10, 53, 172, 0.25) 0%,
-              rgba(10, 53, 172, 0.15) 20%,
-              rgba(10, 53, 172, 0.05) 40%,
-              rgba(255, 255, 255, 0.3) 70%,
-              rgba(255, 255, 255, 0.8) 90%,
-              white 100%
-            );
-          "
+          class="absolute inset-0 -z-10 bg-gradient-to-br from-gray-950 via-gray-900/10 to-gray-900/1 dark:from-blue-950/20 dark:via-gray-900/10 dark:to-gray-900/1"
           data-astro-cid-bbe6dxrz
         ></div>
         <svg
           aria-hidden="true"
-          class="absolute inset-0 -z-10 size-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+          class="absolute inset-0 -z-10 size-full stroke-gray-600 dark:stroke-gray-700 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
           data-astro-cid-bbe6dxrz
         >
           <defs data-astro-cid-bbe6dxrz>
@@ -281,13 +626,13 @@
         >
           <div data-astro-cid-bbe6dxrz>
             <h2
-              class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 animate-fade-in"
+              class="text-pretty text-xl sm:text-2xl md:text-5xl font-bold tracking-tight text-gray-700 dark:text-gray-200 animate-fade-in"
               data-astro-cid-bbe6dxrz
             >
               Olá, seja Bem-vindo(a)! 👋
             </h2>
             <h1
-              class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
+              class="mt-6 sm:mt-8 md:mt-10 text-pretty text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight text-gray-800 dark:text-gray-100 animate-fade-in animation-delay-200"
               data-astro-cid-bbe6dxrz
             >
               Sou
@@ -296,7 +641,7 @@
               >
             </h1>
             <p
-              class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 animate-fade-in animation-delay-400"
+              class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 dark:text-gray-300 animate-fade-in animation-delay-400"
               data-astro-cid-bbe6dxrz
             >
               Front / Back-End &amp; Full Stack Developer
@@ -304,7 +649,7 @@
           </div>
         </div>
         <div
-          class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 animate-fade-in animation-delay-600"
+          class="absolute bottom-0 left-0 right-0 p-8 sm:p-12 md:p-24 flex gap-x-4 sm:gap-x-6 md:gap-x-8 text-gray-700 dark:text-gray-200 animate-fade-in animation-delay-600"
           data-astro-cid-bbe6dxrz
         >
           <a
@@ -448,14 +793,17 @@
           </a>
         </div>
       </div>
-      <section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <section
+        id="about"
+        class="p-8 sm:p-12 md:p-16 lg:p-24 bg-white dark:bg-gray-900"
+      >
         <div>
           <div
             class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
             <div class="lg:col-span-4">
               <h2
-                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900 dark:text-gray-100"
               >
                 Sobre mim
               </h2>
@@ -466,7 +814,7 @@
             </div>
             <div class="lg:col-span-8 space-y-8">
               <p
-                class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600 text-justify"
+                class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600 dark:text-gray-300 text-justify"
               >
                 Sou estudante de Análise e Desenvolvimento de Sistemas,
                 apaixonado por tecnologia e programação. Gosto de criar sistemas
@@ -476,7 +824,7 @@
               <div class="pt-4">
                 <div class="flex flex-wrap gap-3">
                   <span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/html.svg"
@@ -486,7 +834,7 @@
                     />
                     HTML </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/css.svg"
@@ -496,7 +844,7 @@
                     />
                     CSS </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/bootstrap.svg"
@@ -506,7 +854,7 @@
                     />
                     Bootstrap </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/react.svg"
@@ -516,7 +864,7 @@
                     />
                     React.js </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/vite.svg"
@@ -526,7 +874,7 @@
                     />
                     Vite </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/framer.svg"
@@ -536,7 +884,7 @@
                     />
                     Framer Motion </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/next.svg"
@@ -546,7 +894,7 @@
                     />
                     Next.js </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/vercel.svg"
@@ -556,7 +904,7 @@
                     />
                     Vercel </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/betterauth.svg"
@@ -566,7 +914,7 @@
                     />
                     Better Auth </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/astro.svg"
@@ -576,7 +924,7 @@
                     />
                     Astro </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/ionic.svg"
@@ -586,7 +934,7 @@
                     />
                     Ionic Framework </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/tailwind.svg"
@@ -596,7 +944,7 @@
                     />
                     Tailwind </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/chartjs.svg"
@@ -606,7 +954,7 @@
                     />
                     Chart.js </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/javascript.svg"
@@ -616,7 +964,7 @@
                     />
                     Javascript </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/ts.svg"
@@ -626,7 +974,7 @@
                     />
                     Typescript </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/node.svg"
@@ -636,7 +984,7 @@
                     />
                     Node.js </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/php.svg"
@@ -646,7 +994,7 @@
                     />
                     PHP </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/csharp.svg"
@@ -656,7 +1004,7 @@
                     />
                     C# </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/dotnet.svg"
@@ -666,7 +1014,7 @@
                     />
                     .NET Framework </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/prisma.svg"
@@ -676,7 +1024,7 @@
                     />
                     Prisma </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/supabase.svg"
@@ -686,7 +1034,7 @@
                     />
                     Supabase </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/mysql.svg"
@@ -696,7 +1044,7 @@
                     />
                     MySql </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/linux.svg"
@@ -706,7 +1054,7 @@
                     />
                     Linux </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/git.svg"
@@ -716,7 +1064,7 @@
                     />
                     Git </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/github.svg"
@@ -726,7 +1074,7 @@
                     />
                     GitHub </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/docker.svg"
@@ -736,7 +1084,7 @@
                     />
                     Docker </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/trello.svg"
@@ -746,7 +1094,7 @@
                     />
                     Trello </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/agile.svg"
@@ -756,7 +1104,7 @@
                     />
                     Metodologias Ágeis </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/logica.svg"
@@ -766,7 +1114,7 @@
                     />
                     Lógica de Programação </span
                   ><span
-                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 shadow-md"
                   >
                     <img
                       src="/icons/poo.svg"
@@ -782,14 +1130,17 @@
           </div>
         </div>
       </section>
-      <section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <section
+        id="projects"
+        class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50 dark:bg-gray-900"
+      >
         <div>
           <div
             class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
             <div class="lg:col-span-4">
               <h2
-                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900 dark:text-gray-100"
               >
                 Projetos
               </h2>
@@ -805,9 +1156,9 @@
                     href="https://tenmenezes.github.io/Brandify"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
+                    class="block relative p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-1"
                     ><div
-                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700"
+                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 dark:bg-gray-700 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700 dark:group-hover:bg-gray-600"
                     >
                       <svg
                         class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -829,13 +1180,13 @@
                           01</span
                         >
                         <h3
-                          class="text-xl sm:text-2xl font-bold text-gray-900 mt-1"
+                          class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1"
                         >
                           Brandify Landing Page
                         </h3>
                       </div>
                       <p
-                        class="text-base sm:text-lg text-gray-600 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
+                        class="text-base sm:text-lg text-gray-600 dark:text-gray-300 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
                       >
                         Desenvolvi uma landing page moderna e responsiva. O site
                         foca em performance, design intuitivo e conversão,
@@ -847,7 +1198,7 @@
                       </p>
                       <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                         <span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/react.svg"
                             loading="lazy"
@@ -855,7 +1206,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />React.js</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/vite.svg"
                             loading="lazy"
@@ -863,7 +1214,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Vite</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/framer.svg"
                             loading="lazy"
@@ -871,7 +1222,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Framer Motion</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/tailwind.svg"
                             loading="lazy"
@@ -879,7 +1230,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Tailwind</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/git.svg"
                             loading="lazy"
@@ -896,9 +1247,9 @@
                     href="https://github.com/tenmenezes/Nexus_SixTech"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
+                    class="block relative p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-1"
                     ><div
-                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700"
+                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 dark:bg-gray-700 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700 dark:group-hover:bg-gray-600"
                     >
                       <svg
                         class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -920,13 +1271,13 @@
                           02</span
                         >
                         <h3
-                          class="text-xl sm:text-2xl font-bold text-gray-900 mt-1"
+                          class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1"
                         >
                           Nexus SixTech WebSite
                         </h3>
                       </div>
                       <p
-                        class="text-base sm:text-lg text-gray-600 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
+                        class="text-base sm:text-lg text-gray-600 dark:text-gray-300 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
                       >
                         Sistema web completo ainda em desenvolvimento, com
                         dashboard administrativo, e um sistema completo de
@@ -935,7 +1286,7 @@
                       </p>
                       <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                         <span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/html.svg"
                             loading="lazy"
@@ -943,7 +1294,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />HTML</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/css.svg"
                             loading="lazy"
@@ -951,7 +1302,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />CSS</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/tailwind.svg"
                             loading="lazy"
@@ -959,7 +1310,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Tailwind</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/javascript.svg"
                             loading="lazy"
@@ -967,7 +1318,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Javascript</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/chartjs.svg"
                             loading="lazy"
@@ -975,7 +1326,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Chart.js</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/php.svg"
                             loading="lazy"
@@ -983,7 +1334,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />PHP</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/mysql.svg"
                             loading="lazy"
@@ -991,7 +1342,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />MySql</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/git.svg"
                             loading="lazy"
@@ -999,7 +1350,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Git</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/agile.svg"
                             loading="lazy"
@@ -1016,9 +1367,9 @@
                     href="https://tenmenezes.github.io/4Players"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
+                    class="block relative p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-1"
                     ><div
-                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700"
+                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 dark:bg-gray-700 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700 dark:group-hover:bg-gray-600"
                     >
                       <svg
                         class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -1040,13 +1391,13 @@
                           03</span
                         >
                         <h3
-                          class="text-xl sm:text-2xl font-bold text-gray-900 mt-1"
+                          class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1"
                         >
                           4Players WebSite
                         </h3>
                       </div>
                       <p
-                        class="text-base sm:text-lg text-gray-600 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
+                        class="text-base sm:text-lg text-gray-600 dark:text-gray-300 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
                       >
                         WebSite desenvolvido como projeto de primeiro período da
                         universidade, responsividade completa, acessibilidade e
@@ -1054,7 +1405,7 @@
                       </p>
                       <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                         <span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/html.svg"
                             loading="lazy"
@@ -1062,7 +1413,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />HTML</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/css.svg"
                             loading="lazy"
@@ -1070,7 +1421,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />CSS</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/bootstrap.svg"
                             loading="lazy"
@@ -1078,7 +1429,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Bootstrap</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/javascript.svg"
                             loading="lazy"
@@ -1086,7 +1437,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Javascript</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/agile.svg"
                             loading="lazy"
@@ -1094,7 +1445,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Metodologias Ágeis</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/logica.svg"
                             loading="lazy"
@@ -1102,7 +1453,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Lógica de Programação</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/git.svg"
                             loading="lazy"
@@ -1119,9 +1470,9 @@
                     href="https://github.com/tenmenezes/Project-Xadrez-Console"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
+                    class="block relative p-4 sm:p-6 md:p-8 bg-white dark:bg-gray-800 rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 hover:-translate-y-1"
                     ><div
-                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700"
+                      class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 dark:bg-gray-700 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700 dark:group-hover:bg-gray-600"
                     >
                       <svg
                         class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -1143,13 +1494,13 @@
                           04</span
                         >
                         <h3
-                          class="text-xl sm:text-2xl font-bold text-gray-900 mt-1"
+                          class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-gray-100 mt-1"
                         >
                           Jogo de Xadrez em Console
                         </h3>
                       </div>
                       <p
-                        class="text-base sm:text-lg text-gray-600 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
+                        class="text-base sm:text-lg text-gray-600 dark:text-gray-300 text-justify leading-relaxed pr-12 sm:pr-14 md:pr-16"
                       >
                         Jogo de Xadrez desenvolvido em C# com .NET Framework,
                         feito para demonstrar habilidades práticas em
@@ -1157,7 +1508,7 @@
                       </p>
                       <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                         <span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/csharp.svg"
                             loading="lazy"
@@ -1165,7 +1516,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />C#</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/dotnet.svg"
                             loading="lazy"
@@ -1173,7 +1524,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />.NET Framework</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/logica.svg"
                             loading="lazy"
@@ -1181,7 +1532,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Lógica de Programação</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/poo.svg"
                             loading="lazy"
@@ -1189,7 +1540,7 @@
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Orientação a Objetos</span
                         ><span
-                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 dark:bg-gray-700 text-white dark:text-gray-200 rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
                             src="/icons/git.svg"
                             loading="lazy"
@@ -1206,14 +1557,17 @@
           </div>
         </div>
       </section>
-      <section id="experience" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <section
+        id="experience"
+        class="p-8 sm:p-12 md:p-16 lg:p-24 bg-white dark:bg-gray-900"
+      >
         <div>
           <div
             class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
             <div class="lg:col-span-4">
               <h2
-                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900 dark:text-gray-100"
               >
                 Experiência
               </h2>
@@ -1226,18 +1580,18 @@
               <div class="relative">
                 <div class="relative mb-12 last:mb-0">
                   <div
-                    class="absolute left-1/2 -top-2 w-4 h-4 bg-white border-2 rounded-full -translate-x-1/2 z-20 transition-all duration-300"
+                    class="absolute left-1/2 -top-2 w-4 h-4 bg-white dark:bg-gray-800 border-2 rounded-full -translate-x-1/2 z-20 transition-all duration-300"
                     style="border-color: #092f97; background-color: #092f97"
                   ></div>
                   <div
-                    class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300"
+                    class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-4 sm:p-5 md:p-6 hover:shadow-md dark:hover:shadow-lg transition-shadow duration-300"
                   >
                     <div
                       class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4"
                     >
                       <div>
                         <h3
-                          class="text-lg sm:text-xl font-semibold text-gray-900"
+                          class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100"
                         >
                           Estagiário de T.I - Suporte Técnico
                         </h3>
@@ -1246,17 +1600,17 @@
                         </p>
                       </div>
                       <span
-                        class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0"
+                        class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0"
                         >Out 2024 - Mar - 2025</span
                       >
                     </div>
                     <ul class="space-y-2">
                       <li class="flex items-start">
                         <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                         ></span
                         ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
+                          class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                           >Auxiliei e orientei mais de 50 alunos por semana em
                           atividades práticas e teóricas, garantindo a
                           continuidade das aulas em laboratório.</span
@@ -1264,10 +1618,10 @@
                       </li>
                       <li class="flex items-start">
                         <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                         ></span
                         ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
+                          class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                           >Executei manutenções preventivas e corretivas em
                           aproximadamente 200 equipamentos no ano, reduzindo
                           interrupções nas atividades de sala de aula.</span
@@ -1275,10 +1629,10 @@
                       </li>
                       <li class="flex items-start">
                         <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                         ></span
                         ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
+                          class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                           >Otimizei a conectividade para mais de 100 usuários
                           diários, mantendo 99% de estabilidade da rede na sala
                           dedicada.</span
@@ -1292,14 +1646,17 @@
           </div>
         </div>
       </section>
-      <section id="education" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <section
+        id="education"
+        class="p-8 sm:p-12 md:p-16 lg:p-24 bg-gray-50 dark:bg-gray-900"
+      >
         <div>
           <div
             class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
             <div class="lg:col-span-4">
               <h2
-                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
+                class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900 dark:text-gray-100"
               >
                 Formação
               </h2>
@@ -1311,14 +1668,14 @@
             <div class="lg:col-span-8">
               <div class="space-y-8">
                 <div
-                  class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300"
+                  class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-4 sm:p-5 md:p-6 hover:shadow-md dark:hover:shadow-lg transition-shadow duration-300"
                 >
                   <div
                     class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4"
                   >
                     <div>
                       <h3
-                        class="text-lg sm:text-xl font-semibold text-gray-900"
+                        class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100"
                       >
                         Tecnólogo - Análise e Desenvolvimento de Sistemas
                       </h3>
@@ -1326,37 +1683,38 @@
                         Centro Universitário Augusto Motta (UNISUAM)
                       </p>
                     </div>
-                    <span class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0"
+                    <span
+                      class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0"
                       >2025 - 2027</span
                     >
                   </div>
                   <ul class="space-y-2">
                     <li class="flex items-start">
                       <span
-                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                       ></span
                       ><span
-                        class="text-sm sm:text-base text-gray-600 text-justify"
+                        class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                         >Projetos acadêmicos focados em desenvolvimento web e
                         mobile</span
                       >
                     </li>
                     <li class="flex items-start">
                       <span
-                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                       ></span
                       ><span
-                        class="text-sm sm:text-base text-gray-600 text-justify"
+                        class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                         >Participação ativa em projetos de desenvolvimento de
                         software</span
                       >
                     </li>
                     <li class="flex items-start">
                       <span
-                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                       ></span
                       ><span
-                        class="text-sm sm:text-base text-gray-600 text-justify"
+                        class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                         >Cursos de extensão em metodologias ágeis e
                         desenvolvimento web</span
                       >
@@ -1364,14 +1722,14 @@
                   </ul>
                 </div>
                 <div
-                  class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300"
+                  class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-4 sm:p-5 md:p-6 hover:shadow-md dark:hover:shadow-lg transition-shadow duration-300"
                 >
                   <div
                     class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4"
                   >
                     <div>
                       <h3
-                        class="text-lg sm:text-xl font-semibold text-gray-900"
+                        class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100"
                       >
                         Ensino médio Técnico em Informática
                       </h3>
@@ -1379,36 +1737,37 @@
                         Escola Técnica do Rio de Janeiro (ETERJ)
                       </p>
                     </div>
-                    <span class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0"
+                    <span
+                      class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-2 sm:mt-0"
                       >2022 - 2024</span
                     >
                   </div>
                   <ul class="space-y-2">
                     <li class="flex items-start">
                       <span
-                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                       ></span
                       ><span
-                        class="text-sm sm:text-base text-gray-600 text-justify"
+                        class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                         >Aprendizado prático em linguagens como C#, C++, HTML,
                         CSS, JavaScript, PHP, PostgreSQl, entre outros.</span
                       >
                     </li>
                     <li class="flex items-start">
                       <span
-                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                       ></span
                       ><span
-                        class="text-sm sm:text-base text-gray-600 text-justify"
+                        class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                         >Participação em feiras de tecnologia e inovação</span
                       >
                     </li>
                     <li class="flex items-start">
                       <span
-                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
+                        class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-500 mt-2 mr-3 flex-shrink-0"
                       ></span
                       ><span
-                        class="text-sm sm:text-base text-gray-600 text-justify"
+                        class="text-sm sm:text-base text-gray-600 dark:text-gray-300 text-justify"
                         >Desenvolvimento de projetos práticos em programação e
                         automação com Arduíno.</span
                       >
@@ -1421,21 +1780,25 @@
         </div>
       </section>
     </section>
-    <footer class="relative bg-gray-50 border-t border-gray-200">
+    <footer
+      class="relative bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800"
+    >
       <div class="mx-auto max-w-6xl px-6 py-12 lg:px-8">
         <div
           class="flex flex-col md:flex-row md:items-center md:justify-between gap-8"
         >
           <div class="flex flex-col gap-4">
-            <h3 class="text-2xl font-bold text-gray-800">Yago Menezes</h3>
-            <p class="text-base text-gray-600">
+            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              Yago Menezes
+            </h3>
+            <p class="text-base text-gray-600 dark:text-gray-300">
               Front / Back-End &amp; Full Stack Developer
             </p>
             <div class="flex gap-x-6">
               <a
                 href="mailto:yago.ten.menezes@outlook.com"
                 aria-label="Email"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+                class="text-gray-600 dark:text-gray-400 transition-colors duration-300 hover:text-[var(--accent-color)] dark:hover:text-[var(--accent-color)]"
                 style="--accent-color: #092f97"
               >
                 <svg
@@ -1462,7 +1825,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+                class="text-gray-600 dark:text-gray-400 transition-colors duration-300 hover:text-[var(--accent-color)] dark:hover:text-[var(--accent-color)]"
                 style="--accent-color: #092f97"
               >
                 <svg
@@ -1492,7 +1855,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+                class="text-gray-600 dark:text-gray-400 transition-colors duration-300 hover:text-[var(--accent-color)] dark:hover:text-[var(--accent-color)]"
                 style="--accent-color: #092f97"
               >
                 <svg
@@ -1517,7 +1880,7 @@
                 href="/others/curriculo_Full.pdf"
                 download
                 aria-label="Currículo"
-                class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
+                class="text-gray-600 dark:text-gray-400 transition-colors duration-300 hover:text-[var(--accent-color)] dark:hover:text-[var(--accent-color)]"
                 style="--accent-color: #092f97"
               >
                 <svg
@@ -1543,29 +1906,29 @@
             <nav class="flex gap-x-8">
               <a
                 href="#about"
-                class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
                 >Sobre</a
               >
               <a
                 href="#projects"
-                class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
                 Projetos
               </a>
               <a
                 href="#experience"
-                class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
                 Experiência
               </a>
               <a
                 href="#education"
-                class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
+                class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
               >
                 Formação
               </a>
             </nav>
-            <p class="text-sm text-gray-500">
+            <p class="text-sm text-gray-500 dark:text-gray-400">
               © 2025 Yago Menezes. Todos os direitos reservados.
             </p>
           </div>
@@ -1575,7 +1938,7 @@
       <div class="absolute inset-0 -z-10 overflow-hidden">
         <svg
           aria-hidden="true"
-          class="absolute bottom-0 left-0 w-full h-24 text-gray-100"
+          class="absolute bottom-0 left-0 w-full h-24 text-gray-100 dark:text-gray-800"
         >
           <pattern
             id="footer-pattern"
