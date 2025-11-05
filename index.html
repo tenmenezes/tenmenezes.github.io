@@ -1,5 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Script de tema do astro / shadcn -->
+<script>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+  const isDark = getThemePreference() === "dark";
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+</script>
+<html lang="pt-br">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -12,8 +36,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <title>Yago Menezes - Web &amp; Back-End Developer</title>
-    <link rel="stylesheet" href="./assets/index.s4FSgmsU.css" />
+    <title>Yago Menezes - Front / Back-End &amp; Full Stack Developer</title>
+    <link rel="stylesheet" href="./assets/index.PuLnTWzy.css" />
   </head>
   <body>
     <header
@@ -32,7 +56,7 @@
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
-              About
+              Sobre
             </a>
           </li>
           <li data-astro-cid-3ef6ksr2>
@@ -41,7 +65,7 @@
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
-              Projects
+              Projetos
             </a>
           </li>
           <li data-astro-cid-3ef6ksr2>
@@ -50,7 +74,7 @@
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
-              Experience
+              Experiência
             </a>
           </li>
           <li data-astro-cid-3ef6ksr2>
@@ -59,7 +83,7 @@
               class="text-gray-700 hover:text-black transition-colors font-medium"
               data-astro-cid-3ef6ksr2
             >
-              Education
+              Formação
             </a>
           </li>
         </ul>
@@ -275,7 +299,7 @@
               class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 animate-fade-in animation-delay-400"
               data-astro-cid-bbe6dxrz
             >
-              Web &amp; Back-End Developer
+              Front / Back-End &amp; Full Stack Developer
             </p>
           </div>
         </div>
@@ -389,7 +413,7 @@
             </svg>
           </a>
           <a
-            href="/others/Curriculo-YagoMenezes.pdf"
+            href="/others/curriculo_Full.pdf"
             download
             aria-label="Currículo"
             title="Meu Currículo"
@@ -433,7 +457,7 @@
               <h2
                 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
               >
-                About Me
+                Sobre mim
               </h2>
               <div
                 class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -446,8 +470,8 @@
               >
                 Sou estudante de Análise e Desenvolvimento de Sistemas,
                 apaixonado por tecnologia e programação. Gosto de criar sistemas
-                web modernos, sistemas back-end e explorar novas ferramentas que
-                me ajudam a evoluir como desenvolvedor.
+                Web modernos, sistemas Back-end e Full Stack, e explorar novas
+                ferramentas que me ajudam a evoluir como desenvolvedor.
               </p>
               <div class="pt-4">
                 <div class="flex flex-wrap gap-3">
@@ -525,6 +549,26 @@
                     class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
                   >
                     <img
+                      src="/icons/vercel.svg"
+                      loading="lazy"
+                      alt="Vercel"
+                      class="w-5 h-5"
+                    />
+                    Vercel </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
+                      src="/icons/betterauth.svg"
+                      loading="lazy"
+                      alt="Better Auth"
+                      class="w-5 h-5"
+                    />
+                    Better Auth </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
                       src="/icons/astro.svg"
                       loading="lazy"
                       alt="Astro"
@@ -575,6 +619,26 @@
                     class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
                   >
                     <img
+                      src="/icons/ts.svg"
+                      loading="lazy"
+                      alt="Typescript"
+                      class="w-5 h-5"
+                    />
+                    Typescript </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
+                      src="/icons/node.svg"
+                      loading="lazy"
+                      alt="Node.js"
+                      class="w-5 h-5"
+                    />
+                    Node.js </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
                       src="/icons/php.svg"
                       loading="lazy"
                       alt="PHP"
@@ -601,6 +665,26 @@
                       class="w-5 h-5"
                     />
                     .NET Framework </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
+                      src="/icons/prisma.svg"
+                      loading="lazy"
+                      alt="Prisma"
+                      class="w-5 h-5"
+                    />
+                    Prisma </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
+                      src="/icons/supabase.svg"
+                      loading="lazy"
+                      alt="Supabase"
+                      class="w-5 h-5"
+                    />
+                    Supabase </span
                   ><span
                     class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
                   >
@@ -645,6 +729,36 @@
                     class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
                   >
                     <img
+                      src="/icons/docker.svg"
+                      loading="lazy"
+                      alt="Docker"
+                      class="w-5 h-5"
+                    />
+                    Docker </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
+                      src="/icons/trello.svg"
+                      loading="lazy"
+                      alt="Trello"
+                      class="w-5 h-5"
+                    />
+                    Trello </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
+                      src="/icons/agile.svg"
+                      loading="lazy"
+                      alt="Metodologias Ágeis"
+                      class="w-5 h-5"
+                    />
+                    Metodologias Ágeis </span
+                  ><span
+                    class="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200 shadow-md"
+                  >
+                    <img
                       src="/icons/logica.svg"
                       loading="lazy"
                       alt="Lógica de Programação"
@@ -677,7 +791,7 @@
               <h2
                 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
               >
-                Projects
+                Projetos
               </h2>
               <div
                 class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -884,6 +998,14 @@
                             alt="Git"
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Git</span
+                        ><span
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          ><img
+                            src="/icons/agile.svg"
+                            loading="lazy"
+                            alt="Metodologias Ágeis"
+                            class="w-4 h-4 sm:w-5 sm:h-5"
+                          />Metodologias Ágeis</span
                         >
                       </div>
                     </div></a
@@ -963,6 +1085,14 @@
                             alt="Javascript"
                             class="w-4 h-4 sm:w-5 sm:h-5"
                           />Javascript</span
+                        ><span
+                          class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
+                          ><img
+                            src="/icons/agile.svg"
+                            loading="lazy"
+                            alt="Metodologias Ágeis"
+                            class="w-4 h-4 sm:w-5 sm:h-5"
+                          />Metodologias Ágeis</span
                         ><span
                           class="flex items-center gap-2 px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 shadow-md"
                           ><img
@@ -1085,7 +1215,7 @@
               <h2
                 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
               >
-                Experience
+                Experiência
               </h2>
               <div
                 class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -1094,107 +1224,6 @@
             </div>
             <div class="lg:col-span-8">
               <div class="relative">
-                <div class="relative mb-12 last:mb-0">
-                  <div
-                    class="absolute left-1/2 -top-2 w-4 h-4 bg-white border-2 rounded-full -translate-x-1/2 z-20 transition-all duration-300"
-                    style="border-color: #092f97; background-color: #092f97"
-                  ></div>
-                  <div
-                    class="absolute left-1/2 bottom-0 w-0.5 h-12 bg-gray-300 -translate-x-1/2 translate-y-full z-10"
-                  ></div>
-                  <div
-                    class="bg-white rounded-lg shadow-sm border border-gray-100 p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-300"
-                  >
-                    <div
-                      class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4"
-                    >
-                      <div>
-                        <h3
-                          class="text-lg sm:text-xl font-semibold text-gray-900"
-                        >
-                          Web &amp; Back-End Developer
-                        </h3>
-                        <p class="text-base sm:text-lg" style="color: #092f97">
-                          Projetos Pessoais e Acadêmicos
-                        </p>
-                      </div>
-                      <span
-                        class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-0"
-                        >2022 - Presente</span
-                      >
-                    </div>
-                    <ul class="space-y-2">
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Desenvolvendo NextBlog, um blog moderno com Next.js,
-                          autenticação e CMS integrado.</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Criando EcommerceNext, e-commerce completo.</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Desenvolvendo Nexus SixTech, site de vendas de jogos
-                          com dashboard, gráficos e controle de estoque.</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Criei o 4Players, site interativo para gamers.</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Portfólio profissional com versões em Astro +
-                          Tailwind, publicado online.</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Experimentando no projeto Astro-Projects, explorando
-                          Astro, Tailwind, Motion e componentes reativos.</span
-                        >
-                      </li>
-                      <li class="flex items-start">
-                        <span
-                          class="inline-block w-1.5 h-1.5 rounded-full bg-gray-400 mt-2 mr-3 flex-shrink-0"
-                        ></span
-                        ><span
-                          class="text-sm sm:text-base text-gray-600 text-justify"
-                          >Implementação do jogo Xadrez Console em C#, aplicando
-                          POO e lógica de movimentação.</span
-                        >
-                      </li>
-                    </ul>
-                  </div>
-                </div>
                 <div class="relative mb-12 last:mb-0">
                   <div
                     class="absolute left-1/2 -top-2 w-4 h-4 bg-white border-2 rounded-full -translate-x-1/2 z-20 transition-all duration-300"
@@ -1272,7 +1301,7 @@
               <h2
                 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
               >
-                Education
+                Formação
               </h2>
               <div
                 class="w-[75px] h-[5px] mt-2 rounded-full"
@@ -1399,7 +1428,9 @@
         >
           <div class="flex flex-col gap-4">
             <h3 class="text-2xl font-bold text-gray-800">Yago Menezes</h3>
-            <p class="text-base text-gray-600">Web &amp; Back-End Developer</p>
+            <p class="text-base text-gray-600">
+              Front / Back-End &amp; Full Stack Developer
+            </p>
             <div class="flex gap-x-6">
               <a
                 href="mailto:yago.ten.menezes@outlook.com"
@@ -1483,7 +1514,7 @@
                 </svg>
               </a>
               <a
-                href="/others/Curriculo-YagoMenezes.pdf"
+                href="/others/curriculo_Full.pdf"
                 download
                 aria-label="Currículo"
                 class="text-gray-600 transition-colors duration-300 hover:text-[var(--accent-color)]"
@@ -1513,25 +1544,25 @@
               <a
                 href="#about"
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
-                >About</a
+                >Sobre</a
               >
               <a
                 href="#projects"
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
               >
-                Projects
+                Projetos
               </a>
               <a
                 href="#experience"
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
               >
-                Experience
+                Experiência
               </a>
               <a
                 href="#education"
                 class="text-sm text-gray-600 hover:text-gray-800 transition-colors"
               >
-                Education
+                Formação
               </a>
             </nav>
             <p class="text-sm text-gray-500">
