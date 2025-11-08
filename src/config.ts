@@ -45,6 +45,20 @@ export const siteConfig = {
   ],
   projects: [
     {
+      name: "SystemCheck Landing Page",
+      description:
+        "Desenvolvi uma landing page interativa e responsiva voltada para uma empresa de tecnologia e diagnóstico digital. A interface foca em clareza visual, microinterações elegantes e performance otimizada, destacando seções de serviços, diferenciais e depoimentos. A página foi projetada com arquitetura modular e escalável, servindo como base para futura integração de um sistema de suporte técnico e simulação de atendimentos.",
+      link: "https://systemcheck.vercel.app/",
+      skills: [
+        "Next.js",
+        "Typescript",
+        "Tailwind",
+        "Vercel",
+        "Git",
+      ],
+    },
+
+    {
       name: "Brandify Landing Page",
       description:
         "Desenvolvi uma landing page moderna e responsiva. O site foca em performance, design intuitivo e conversão, oferecendo recursos como layouts responsivos, SEO integrado, personalização fácil e suporte dedicado. Inclui seções de hero, funcionalidades, depoimentos de clientes, preços e FAQ, com animações suaves implementadas via Framer Motion.",
