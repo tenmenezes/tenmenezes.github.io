@@ -19,6 +19,7 @@ export const siteConfig = {
     "Vite",
     "Framer Motion",
     "Next.js",
+    "Shadcn/ui",
     "Vercel",
     "Better Auth",
     "Astro",
@@ -28,6 +29,7 @@ export const siteConfig = {
     "Javascript",
     "Typescript",
     "Node.js",
+    "Postman",
     "PHP",
     "C#",
     ".NET Framework",
@@ -45,16 +47,35 @@ export const siteConfig = {
   ],
   projects: [
     {
+      name: "AgenteIA — Gerador Inteligente de Planos Alimentares",
+      description:
+        "Desenvolvi uma aplicação web full-stack capaz de gerar planos alimentares personalizados de forma inteligente, com base em parâmetros nutricionais e objetivos do usuário. O projeto foi criado inicialmente com arquitetura separada (frontend e backend), utilizando Node.js e Zod na camada de API, e Next.js + TypeScript + Tailwind no frontend. Posteriormente, foi migrado para uma aplicação full-stack em Next.js para deploy gratuito e integração serverless na Vercel. A interface é moderna, responsiva e validada com Zod, permitindo futuras implementações como exportação de planos em PDF e histórico de dietas salvas.",
+      link: "https://agent-ia-beta.vercel.app/",
+      skills: [
+        "Next.js",
+        "Tailwind",
+        "Typescript",
+        "Node.js",
+        "Postman",
+        "Shadcn/ui",
+        "Vercel",
+        "Git",
+      ],
+    },
+
+    {
       name: "SystemCheck Landing Page",
       description:
         "Desenvolvi uma landing page interativa e responsiva voltada para uma empresa de tecnologia e diagnóstico digital. A interface foca em clareza visual, microinterações elegantes e performance otimizada, destacando seções de serviços, diferenciais e depoimentos. A página foi projetada com arquitetura modular e escalável, servindo como base para futura integração de um sistema de suporte técnico e simulação de atendimentos.",
       link: "https://systemcheck.vercel.app/",
       skills: [
         "Next.js",
+        "React.js",
         "Typescript",
         "Tailwind",
         "Vercel",
         "Git",
+        "GitHub",
       ],
     },
 
@@ -156,6 +177,7 @@ export const skillIconsMap: Record<string, string> = {
   Vite: "vite",
   "Framer Motion": "framer",
   "Next.js": "next",
+  "Shadcn/ui": "shadcn",
   Vercel: "vercel",
   "Better Auth": "betterauth",
   "Ionic Framework": "ionic",
@@ -164,6 +186,7 @@ export const skillIconsMap: Record<string, string> = {
   Javascript: "javascript",
   Typescript: "ts",
   "Node.js": "node",
+  "Postman": "postman",
   PHP: "php",
   "C#": "csharp",
   ".NET Framework": "dotnet",

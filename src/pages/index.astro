@@ -13,19 +13,34 @@ import "../styles/global.css";
 <!-- Script de tema do astro / shadcn -->
 
 <script is:inline>
-	const getThemePreference = () => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			const savedTheme = localStorage.getItem('theme');
-			if (savedTheme === 'system') {
-				return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-			}
-			return savedTheme;
-		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
+  // Previne o flash de transição no carregamento
+  document.documentElement.dataset.themeLoading = true;
+
+  const getThemePreference = () => {
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'system' || !savedTheme) {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      }
+      return savedTheme;
+    } catch {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
+    }
+  };
+
+  const theme = getThemePreference();
+  document.documentElement.classList[theme === 'dark' ? 'add' : 'remove']('dark');
+
+  // Remove o bloqueio da transição após o carregamento
+  window.addEventListener('DOMContentLoaded', () => {
+    delete document.documentElement.dataset.themeLoading;
+  });
 </script>
+
 
 <html lang="pt-br">
   <head>
@@ -42,7 +57,7 @@ import "../styles/global.css";
     />
     <title>{siteConfig.name} - {siteConfig.title}</title>
   </head>
-  <body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+  <body class="bg-white dark:bg-gray-900 transition duration-200">
     <Header />
     <section>
       <Hero />

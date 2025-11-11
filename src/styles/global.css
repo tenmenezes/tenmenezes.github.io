@@ -123,3 +123,18 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Transição suave de tema */
+html,
+body,
+* {
+  transition-property: background-color, color, border-color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Evita o flash de transição no carregamento inicial */
+html[data-theme-loading] *,
+html[data-theme-loading] {
+  transition: none !important;
+}
