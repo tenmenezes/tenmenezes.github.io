@@ -1,16 +1,17 @@
 export const siteConfig = {
   name: "Yago Menezes",
-  title: "Front / Back-End & Full Stack Developer",
+  title: "Software & Web Developer",
   description: "Portfolio website de Yago Menezes",
   accentColor: "#092f97",
   social: {
     email: "yago.ten.menezes@outlook.com",
     linkedin: "https://linkedin.com/in/ten-menezes",
     github: "https://github.com/tenmenezes",
+    whatsapp: "https://wa.me/5521999922459?text=Ol%C3%A1%21%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar.",
     curriculo: "/others/curriculo_Full.pdf",
   },
   aboutMe:
-    "Sou estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia e programação. Gosto de criar sistemas Web modernos, sistemas Back-end e Full Stack, e explorar novas ferramentas que me ajudam a evoluir como desenvolvedor.",
+    "Sou estudante de Análise e Desenvolvimento de Sistemas, formado como técnico de informática pela ETERJ - Escola Técnica do Rio de janeiro. Apaixonado por tecnologia e programação. Gosto de criar sistemas modernos, e explorar novas ferramentas que me ajudam a evoluir como desenvolvedor.",
   skills: [
     "HTML",
     "CSS",

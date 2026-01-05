@@ -14,7 +14,13 @@ import { ModeToggle } from "./ModeToggle";
   </div>
   <!-- Gradient overlay -->
   <div
-    class="absolute inset-0 -z-10 bg-gradient-to-br from-gray-950 via-gray-900/10 to-gray-900/1 dark:from-blue-950/20 dark:via-gray-900/10 dark:to-gray-900/1"
+    class="absolute inset-0 -z-10 bg-gradient-to-br 
+    from-gray-950/50
+    via-gray-900/10
+    to-gray-900/1
+    dark:from-blue-950/20
+    dark:via-gray-900/10 
+    dark:to-gray-900/1"
   >
   </div>
   <svg
@@ -245,6 +251,39 @@ import { ModeToggle } from "./ModeToggle";
               <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
             </>
           </svg>
+        </a>
+      )
+    }
+    {
+      siteConfig.social?.whatsapp && (
+        <a
+          href={siteConfig.social.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          title="Meu Contato"
+          class="transition-colors duration-300 hover:text-[var(--accent-color)]"
+        >
+          <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8"
+        >
+          <>
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9" />
+            <path d="M9 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-1 0v1z" />
+            <path d="M14 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-1 0v1z" />
+            <path d="M9.5 14a3 3 0 0 0 5 0" />
+          </>
+        </svg>
         </a>
       )
     }
