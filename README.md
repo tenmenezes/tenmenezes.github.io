@@ -36,6 +36,6 @@ O objetivo principal é mostrar meu trabalho de forma clara, interativa e otimiz
 
 ---
 
-> 💡 Dica: Como o site é totalmente estático, todo conteúdo visível é gerado diretamente do build do Astro, garantindo performance e compatibilidade em qualquer dispositivo.
+> 💡 Como o site é totalmente estático, todo conteúdo visível é gerado diretamente do build do Astro, garantindo performance e compatibilidade em qualquer dispositivo.
 > > Este portfolio foi desenvolvido com base em um template Astro criado por [RyanFitzgerald | devportfolio](https://github.com/RyanFitzgerald/devportfolio).  
 > <p align="center"> Personalizações e conteúdo são de autoria de Yago Menezes.</p>
