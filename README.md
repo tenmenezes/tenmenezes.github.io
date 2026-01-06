@@ -1,6 +1,6 @@
 # Portfolio de Yago Menezes
 
-![Print da tela inicial](./others/tela-inicial.png)  
+![Print da tela inicial](./tela-inicial-port.png)  
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-Online-97312d)](https://tenmenezes.github.io)
 
