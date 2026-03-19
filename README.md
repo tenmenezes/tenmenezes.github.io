@@ -36,6 +36,7 @@ Aqui você vai encontrar aplicações reais construídas durante minha trajetór
 
 ## Estrutura do projeto
 
+```
 src/
 ├── components/     # Componentes reutilizáveis
 ├── pages/          # Páginas da aplicação
@@ -43,7 +44,7 @@ src/
 ├── data/           # Conteúdo (projetos, blog, etc)
 ├── hooks/          # Hooks personalizados
 └── assets/         # Imagens e arquivos estáticos
-
+```
 ---
 
 ## Em evolução
