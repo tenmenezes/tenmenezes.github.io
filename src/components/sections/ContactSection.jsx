@@ -34,7 +34,7 @@ export function ContactSection() {
               Contato
             </p>
             <h2 className="text-lg font-medium uppercase tracking-[0.2em] text-foreground">
-              Bora construir em algo juntos?
+              Bora construir algo juntos?
             </h2>
             <p className="max-w-md text-xs leading-relaxed text-muted-foreground">
               Se você tem uma ideia, projeto ou precisa de alguém pra desenvolver, me chama!
