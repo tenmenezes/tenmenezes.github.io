@@ -14,9 +14,10 @@ export function ProjectsPage() {
             Projetos
           </h1>
           <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Um conjunto de trabalhos focado em design de produto, desenvolvimento de interface
-            e sistemas de motion — cada projeto guiado pela crença de que contenção
-            e precisão geram os resultados mais duráveis.
+            Projetos desenvolvidos com foco em prática real,
+            envolvendo construção de interfaces, APIs e integração
+            com banco de dados, sempre buscando código organizado
+            e aplicações bem estruturadas.
           </p>
         </div>
       </section>
