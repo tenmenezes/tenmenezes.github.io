@@ -2,7 +2,7 @@ export const projects = [
   {
     slug: 'helpdesk-system',
     title: 'Help Desk System',
-    role: 'Desenvolvimento Fullstack',
+    role: 'Fullstack',
     year: '2025',
     tags: ['Next.js', 'PHP', 'MySQL'],
     summary:
@@ -24,31 +24,31 @@ export const projects = [
   },
   {
     slug: 'system-check',
-    title: 'SystemCheck',
-    role: 'Desenvolvimento Frontend',
+    title: 'System Check',
+    role: 'Frontend',
     year: '2025',
-    tags: ['React', 'Tailwind CSS', 'JavaScript XML'],
+    tags: ['Next.js', 'Tailwind CSS', 'AOS.js'],
     summary:
-      'Sistema de monitoramento de serviços e incidentes com foco em disponibilidade, controle de status e visualização de dados.',
+      'O foco está na performance, organização de componentes e experiência imersiva, servindo como base para evoluir em breve para uma aplicação completa de suporte técnico online.',
     description:
-      'O SystemCheck é uma aplicação voltada para monitoramento de serviços, permitindo registrar incidentes, acompanhar status e visualizar impacto em tempo real. O sistema foi desenvolvido com foco em organização de dados, regras de negócio e representação clara das informações no front-end.',
+      'O SystemCheck é uma aplicação que simula uma página institucional de uma empresa de tecnologia e diagnóstico digital, destacando serviços, diferenciais e depoimentos de forma visual e envolvente.',
     details: [
-      { label: 'Tipo', value: 'Sistema de Monitoramento' },
-      { label: 'Stack', value: 'React, PHP, MySQL' },
-      { label: 'Escopo', value: 'Dashboard e gerenciamento de incidentes' },
+      { label: 'Tipo', value: 'Landing Page Interativa' },
+      { label: 'Stack', value: 'Next.js, TypeScript, Tailwind CSS, AOS.js' },
+      { label: 'Escopo', value: 'Página institucional para serviços de tecnologia e diagnóstico digital' },
       { label: 'Ano', value: '2025' },
     ],
     highlights: [
-      'Registro e gerenciamento de incidentes com diferentes níveis de severidade',
-      'Atualização automática do status dos serviços baseada em regras de negócio',
-      'Dashboard com visualização de disponibilidade e impacto',
-      'Relacionamento entre serviços e incidentes utilizando modelagem relacional',
+      'Design responsivo adaptado para mobile, tablet e desktop',
+      'Organização visual com foco em hierarquia, legibilidade e acessibilidade',
+      'Simulação de landing page institucional para serviços de tecnologia',
+      'Base preparada para evolução futura com integração de APIs e funcionalidades dinâmicas',
     ],
   },
   {
     slug: 'xadrez-console',
     title: 'Xadrez no Console',
-    role: 'Desenvolvedor',
+    role: 'Backend',
     year: '2024',
     tags: ['C#.NET', 'Lógica', 'POO'],
     summary:

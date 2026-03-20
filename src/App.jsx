@@ -7,6 +7,7 @@ import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { BlogPage } from './pages/BlogPage'
 import { BlogPostPage } from './pages/BlogPostPage'
 import { ScrollToHash } from './components/utils/ScrollToHash'
+import { Toaster } from 'sonner'
 
 export default function App() {
   return (
@@ -25,6 +26,13 @@ export default function App() {
         </div>
         <Footer />
       </div>
+
+      <Toaster 
+        position='top-center'
+        theme='system'
+        richColors
+        closeButton
+      />
     </BrowserRouter>
   )
 }

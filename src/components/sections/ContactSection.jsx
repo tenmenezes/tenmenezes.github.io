@@ -1,18 +1,96 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { LoaderPinwheelIcon } from 'lucide-react';
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 
+import emailjs from '@emailjs/browser';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { toast } from 'sonner'
+import { span } from 'framer-motion/client';
+
 export function ContactSection() {
-  const [form, setForm] = useState({ name: '', email: '', project: '' })
+  const [form, setForm] = useState({
+     name: '',
+     email: '',
+     project: '',
+     company: '' // honeypot 
+    })
+
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [captcha, setCaptcha] = useState(null)
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  const lastSent = localStorage.getItem('lastSent')
+
+  const serviceId = import.meta.env.VITE_SERVICE_ID
+  const templateId = import.meta.env.VITE_TEMPLATE_ID
+  const publicKey = import.meta.env.VITE_PUBLIC_KEY
+  const captchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }))
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Substitua pela sua lógica real de envio de formulário
-    setSent(true)
+        
+    // honeypot
+    if(form.company) return
+
+    // vaidação básica
+    if(!form.name || !form.email || !form.project) {
+      toast.info("Preencha todos os campos.")
+      return
+    }
+
+    // email válido
+    if(!emailRegex.test(form.email)) {
+      toast.error("Email inválido")
+      return
+    }
+
+    // validando mensagem
+    if(form.project.length < 10) {
+      toast.error("A mensagem deve conter pelo menos 10 caracteres.")
+      return
+    }
+
+    // Rate limit (1 min)
+    if(lastSent && Date.now() - Number(lastSent) < 60000) {
+      toast.warning("Espere 1 min para enviar um novo e-mail.")
+      return
+    }
+
+    // Verificação de Captcha
+    if(!captcha) {
+      toast.warning("Confirme que você não é um robô")
+      return
+    }
+
+    try {
+      setLoading(true)
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.project,
+        },
+        publicKey
+      )
+
+      localStorage.setItem('lastsent', Date.now().toString())
+      setSent(true)
+    } catch (error) {
+      console.log("Mensagem de Erro: " + error)
+      alert("Erro ao enviar mensagem.")
+    } finally {
+      setLoading(false)
+    }
+
   }
 
   return (
@@ -74,6 +152,17 @@ export function ContactSection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+
+              {/* Honeypot invisível pra prevenção de bots */}
+              
+              <input 
+                type="text"
+                id='company'
+                value={form.company}
+                onChange={handleChange}
+                style={{ display: 'none' }}
+               />
+
               <div className="space-y-1.5">
                 <label
                   htmlFor="name"
@@ -127,6 +216,15 @@ export function ContactSection() {
                 />
               </div>
 
+            {/* CAPTCHA */}
+
+            <div className='sm:col-span-2'>
+              <ReCAPTCHA
+                sitekey={captchaSiteKey}
+                onChange={(value) => setCaptcha(value)}
+              />
+            </div>
+
               <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
                 <p className="max-w-xs text-[0.6rem] leading-relaxed text-muted-foreground">
                   Ao enviar este formulário você concorda em ser contatado sobre
@@ -135,8 +233,16 @@ export function ContactSection() {
                 <button
                   type="submit"
                   className="inline-flex items-center justify-center rounded-xl border border-border bg-foreground px-6 py-2 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]"
+                  disabled={loading}
                 >
-                  Enviar mensagem
+                  {loading ? (
+                    <span className='flex items-center gap-2'>
+                      <LoaderPinwheelIcon className='w-4 h-4 animate-spin transition' /> 
+                      'Enviando...'
+                    </span>
+                  ) : (
+                    'Enviar mensagem'
+                  )}
                 </button>
               </div>
             </form>
