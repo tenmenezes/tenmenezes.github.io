@@ -9,7 +9,7 @@ export const projects = [
   {
     slug: 'helpdesk-system',
     title: 'Help Desk System',
-    role: 'Fullstack',  
+    role: 'Fullstack',
     year: '2025',
     tags: ['Next.js', 'PHP', 'MySQL'],
     preview: helpdesk,
@@ -93,7 +93,7 @@ export const projects = [
     year: '2025',
     tags: ['React', 'Tailwind CSS', 'Framer Motion'],
     preview: brandify,
-    previewPosition: 'object-center',
+    previewPosition: 'object-left',
     githubURL: 'https://github.com/tenmenezes/Brandify',
     liveURL: 'https://tenmenezes.github.io/Brandify',
     summary:
@@ -101,7 +101,7 @@ export const projects = [
     description:
       'Brandify é um projeto desenvolvido com React e Vite, estilizado com Tailwind CSS e animado com Framer Motion. O site foi projetado para entregar uma experiência de usuário fluida, com componentização em React, desempenho otimizado e deploy automatizado no GitHub Pages.',
     details: [
-      { label: 'Tipo', value: 'Site Institucional / Portfólio Front-end' },
+      { label: 'Tipo', value: 'Site Institucional / Landing Page Front-end' },
       { label: 'Stack', value: 'React, Vite, Tailwind CSS, Framer Motion' },
       { label: 'Escopo', value: 'Interface interativa, responsiva e com animações suaves' },
       { label: 'Ano', value: '2025' },
@@ -122,6 +122,7 @@ export const projects = [
     preview: fourplayers,
     previewPosition: 'object-center',
     githubURL: 'https://github.com/tenmenezes/4Players',
+    liveURL: 'https://tenmenezes.github.io/4Players',
     summary:
       'Projeto web de estudo que simula uma loja virtual de jogos com páginas por plataforma, cadastro de usuário, carrinho de compras e alternância entre tema claro e escuro.',
     description:
@@ -130,7 +131,7 @@ export const projects = [
       { label: 'Tipo', value: 'Loja Virtual de Jogos' },
       { label: 'Stack', value: 'HTML5, CSS3, JavaScript, LocalStorage' },
       { label: 'Escopo', value: 'Catálogo por plataforma, cadastro, carrinho e tema dinâmico' },
-      { label: 'Ano', value: '2024' },
+      { label: 'Ano', value: '2025' },
     ],
     highlights: [
       'Páginas específicas para jogos de PlayStation, Xbox e Nintendo',

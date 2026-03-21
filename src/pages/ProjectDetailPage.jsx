@@ -128,7 +128,7 @@ export function ProjectDetailPage() {
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-background/90 px-4 py-2 text-[0.65rem] uppercase tracking-[0.2em] text-foreground backdrop-blur-sm transition hover:bg-foreground hover:text-background"
                 >
                   <ExternalLink className="h-3.5 w-3.5" />
-                  Ver projeto
+                  Demo
                 </a>
               )}
 
