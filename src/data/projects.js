@@ -1,10 +1,17 @@
+import helpdesk from '../assets/HelpDeskPrint.png'
+import systemcheck from '../assets/systemcheck.png'
+import xadrez from '../assets/xadrezProject.png'
+
 export const projects = [
   {
     slug: 'helpdesk-system',
     title: 'Help Desk System',
-    role: 'Fullstack',
+    role: 'Fullstack',  
     year: '2025',
     tags: ['Next.js', 'PHP', 'MySQL'],
+    preview: helpdesk,
+    previewPosition: 'object-top',
+    githubURL: 'https://github.com/tenmenezes/HelpDesk-System',
     summary:
       'Sistema completo de Help Desk com gerenciamento de chamados, usuários e fluxo de atendimento, focado em organização e integração entre front-end e back-end.',
     description:
@@ -28,6 +35,10 @@ export const projects = [
     role: 'Frontend',
     year: '2025',
     tags: ['Next.js', 'Tailwind CSS', 'AOS.js'],
+    preview: systemcheck,
+    previewPosition: 'object-left',
+    githubURL: 'https://github.com/tenmenezes/SystemCheck',
+    liveURL: 'https://systemcheck.vercel.app/',
     summary:
       'O foco está na performance, organização de componentes e experiência imersiva, servindo como base para evoluir em breve para uma aplicação completa de suporte técnico online.',
     description:
@@ -51,6 +62,9 @@ export const projects = [
     role: 'Backend',
     year: '2024',
     tags: ['C#.NET', 'Lógica', 'POO'],
+    preview: xadrez,
+    previewPosition: 'object-center',
+    githubURL: 'https://github.com/tenmenezes/Project-Xadrez-Console',
     summary:
       'Implementação de um jogo de xadrez no console utilizando C#, com foco em lógica, regras do jogo e programação orientada a objetos.',
     description:
