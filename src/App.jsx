@@ -6,12 +6,14 @@ import { ProjectsPage } from './pages/ProjectsPage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { BlogPage } from './pages/BlogPage'
 import { BlogPostPage } from './pages/BlogPostPage'
+import { ScrollToTop } from './components/utils/ScrollToTop'
 import { ScrollToHash } from './components/utils/ScrollToHash'
 import { Toaster } from 'sonner'
 
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <ScrollToHash />
       <div className="min-h-screen bg-background text-foreground antialiased flex flex-col">
         <Navbar />
@@ -27,7 +29,7 @@ export default function App() {
         <Footer />
       </div>
 
-      <Toaster 
+      <Toaster
         position='top-center'
         theme='system'
         richColors

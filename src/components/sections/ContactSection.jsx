@@ -6,7 +6,6 @@ import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 import emailjs from '@emailjs/browser';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'sonner'
-import { span } from 'framer-motion/client';
 
 export function ContactSection() {
   const [form, setForm] = useState({
@@ -17,7 +16,6 @@ export function ContactSection() {
     })
 
   const [sent, setSent] = useState(false)
-  const [loading, setLoading] = useState(false)
   const [captcha, setCaptcha] = useState(null)
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -56,22 +54,13 @@ export function ContactSection() {
       return
     }
 
-    // Rate limit (1 min)
-    if(lastSent && Date.now() - Number(lastSent) < 60000) {
-      toast.warning("Espere 1 min para enviar um novo e-mail.")
-      return
-    }
-
     // Verificação de Captcha
     if(!captcha) {
       toast.warning("Confirme que você não é um robô")
       return
     }
 
-    try {
-      setLoading(true)
-
-      await emailjs.send(
+    const sendPromisse = emailjs.send(
         serviceId,
         templateId,
         {
@@ -82,15 +71,15 @@ export function ContactSection() {
         publicKey
       )
 
-      localStorage.setItem('lastsent', Date.now().toString())
-      setSent(true)
-    } catch (error) {
-      console.log("Mensagem de Erro: " + error)
-      alert("Erro ao enviar mensagem.")
-    } finally {
-      setLoading(false)
-    }
-
+      toast.promise(sendPromisse, {
+        loading: 'Enviando E-mail...',
+        success: () => {
+          localStorage.setItem('lastsent', Date.now().toString())
+          setSent(true)
+          return 'E-mail enviado com sucesso!'
+        },
+        error: 'Algo deu errado 😥'
+      })
   }
 
   return (
@@ -233,16 +222,8 @@ export function ContactSection() {
                 <button
                   type="submit"
                   className="inline-flex items-center justify-center rounded-xl border border-border bg-foreground px-6 py-2 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <span className='flex items-center gap-2'>
-                      <LoaderPinwheelIcon className='w-4 h-4 animate-spin transition' /> 
-                      'Enviando...'
-                    </span>
-                  ) : (
-                    'Enviar mensagem'
-                  )}
+                >                    
+                    Enviar mensagem
                 </button>
               </div>
             </form>

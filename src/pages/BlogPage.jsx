@@ -1,36 +1,68 @@
 import { posts } from '../data/blog'
 import { BlogCard } from '../components/ui/BlogCard'
+import { motion } from 'framer-motion'
+import { baseTransition, fadeUp, staggerContainer } from '../motionConfig'
 
 export function BlogPage() {
   return (
     <main className="border-b border-border/60 bg-background">
+
       {/* Hero */}
-      <section className="border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/30">
+      <motion.section
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        animate="visible"
+        className="border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/30"
+      >
         <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-0 lg:py-20">
-          <p className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
+          <motion.p
+            variants={fadeUp}
+            transition={baseTransition}
+            className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground"
+          >
             Aprendizados
-          </p>
-          <h1 className="mb-4 text-2xl font-medium uppercase tracking-[0.2em] text-foreground">
+          </motion.p>
+          <motion.h1
+            variants={fadeUp}
+            transition={baseTransition}
+            className="mb-4 text-2xl font-medium uppercase tracking-[0.2em] text-foreground"
+          >
             Anotações
-          </h1>
-          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+          </motion.h1>
+          <motion.p
+            variants={fadeUp}
+            transition={baseTransition}
+            className="max-w-xl text-sm leading-relaxed text-muted-foreground"
+          >
             Anotações e aprendizados sobre desenvolvimento web,
             arquitetura de sistemas e construção de APIs, com foco
             em aplicações reais e boas práticas.
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* List */}
-      <section className="border-b border-border/60 bg-background">
+      <motion.section
+        variants={staggerContainer(0.06)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        className="border-b border-border/60 bg-background"
+      >
         <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-0 lg:py-14">
-          <div className="grid gap-4">
+          <motion.div className="grid gap-4">
             {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} showCategory />
+              <motion.div
+                key={post.slug}
+                variants={fadeUp}
+                transition={baseTransition}
+              >
+                <BlogCard post={post} showCategory />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </main>
   )
 }

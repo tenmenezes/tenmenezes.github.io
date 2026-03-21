@@ -97,12 +97,12 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right: Profile Card */}
+        {/* Direita: Card do Perfil */}
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...baseTransition, delay: 0.25 }}
+          transition={{ ...baseTransition, delay: 0.50 }}
         >
           <div className="relative overflow-hidden rounded-xl border border-border/70 bg-background/80 p-6 shadow-[0_0_120px_rgba(0,0,0,0.14)] hover:-translate-y-2 transition-all duration-300">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(0,0,0,0.45),_transparent_60%)]" />

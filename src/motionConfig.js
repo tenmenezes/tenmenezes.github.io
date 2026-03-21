@@ -1,6 +1,6 @@
 export const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 24, filter: 'blur(4px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
 }
 
 export const fadeUpSlow = {
@@ -10,10 +10,10 @@ export const fadeUpSlow = {
 
 export const baseTransition = {
   duration: 0.4,
-  ease: 'easeOut',
+  ease: [0.22, 1, 0.36, 1],
 }
 
-export const staggerContainer = (stagger = 0.12) => ({
+export const staggerContainer = (stagger = 0.06) => ({
   hidden: {},
   visible: {
     transition: {
