@@ -21,7 +21,7 @@ export function ProjectsPreview() {
           viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer(0.12)}
         >
-          {projects.map((project, index) => (
+          {projects.slice(0, 3).map((project, index) => (
             <motion.div
               key={project.slug}
               variants={fadeUp}
