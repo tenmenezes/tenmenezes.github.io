@@ -107,7 +107,14 @@ export function Navbar() {
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            <motion.span
+              key={mobileOpen ? 'close' : 'menu'}
+              initial={{ opacity: 0, rotate: -90, y: -4 }}
+              animate={{ opacity: 1, rotate: 0, y: 0 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+            >
+              {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </motion.span>
           </button>
         </motion.div>
       </div>
@@ -116,10 +123,11 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            style={{ overflow: 'hidden' }}
             className="border-t border-border/60 bg-background/95 backdrop-blur-xl md:hidden"
           >
             <nav className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-4">
