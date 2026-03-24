@@ -26,12 +26,12 @@ export function Hero() {
           variants={staggerContainer(0.1)}
         >
           <motion.div
-            className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground backdrop-blur"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-border/70 bg-background/80 px-3 py-1 text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground backdrop-blur"
             variants={fadeUp}
             transition={{ ...baseTransition, delay: 0 }}
           >
-            <span className="h-1 w-1 rounded-full bg-green-500" />
-            Disponível para novos projetos
+            <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600 animate-pulse" />
+            <span>Disponível para novos projetos</span>
           </motion.div>
 
           <motion.div
@@ -44,7 +44,7 @@ export function Hero() {
                 <ScrambleText text="Desenvolvedor Web & Backend" />
               </span>
             </h1>
-            <p className="max-w-xl text-sm leading-relaxed text-foreground">
+            <p className="max-w-xl text-sm leading-relaxed text-foreground text-justify">
               Sou desenvolvedor focado na criação de sistemas web e aplicações backend,
               transformando ideias em aplicações funcionais, escaláveis e bem estruturadas.
             </p>
@@ -68,10 +68,10 @@ export function Hero() {
           >
             <Link
               to="/projects"
-              className="group inline-flex items-center gap-2 rounded-xl border bg-foreground px-5 py-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-foreground px-3 py-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]"
             >
-              Ver projetos
-              <ArrowUpRight className="ml-1 h-3 w-3 transition-transform group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
+              <span className='text-sm'>Ver projetos</span>
+              <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
             </Link>
 
             <div className="flex items-center gap-2 text-muted-foreground">
@@ -124,7 +124,7 @@ export function Hero() {
               </div>
 
               <div className="flex-1 space-y-4">
-                <p className="max-w-xl text-sm leading-relaxed text-gray-500">
+                <p className="max-w-xl text-sm leading-relaxed text-gray-500 text-justify">
                   Gosto de transformar ideias em sistemas reais,
                   cuidando tanto da lógica quanto da interface para
                   entregar algo que funcione bem de verdade.

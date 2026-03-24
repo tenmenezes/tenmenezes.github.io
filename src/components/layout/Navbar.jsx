@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTheme } from '../../hooks/useTheme'
 import { Button } from '../ui/Button'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
+import { AnimatedNavLink } from '../ui/AnimatedNavLink'
 import profileImg from '../../assets/perfil.jpeg'
 
 const navLinks = [
@@ -47,23 +48,16 @@ export function Navbar() {
         </motion.div>
 
         {/* Desktop Nav */}
-        <nav className="hidden items-center gap-6 text-xs font-medium uppercase tracking-[0.25em] md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map(({ to, label }, index) => (
             <motion.div
               key={to}
               variants={fadeUp}
               transition={{ ...baseTransition, delay: 0.04 * (index + 1) }}
             >
-              <Link
-                to={to}
-                className={`relative pb-1 transition-colors hover:text-foreground ${pathname === to ? 'text-foreground' : 'text-muted-foreground'
-                  }`}
-              >
+              <AnimatedNavLink to={to} isActive={pathname === to}>
                 {label}
-                {pathname === to && (
-                  <span className="absolute bottom-0 left-0 h-px w-full bg-foreground" />
-                )}
-              </Link>
+              </AnimatedNavLink>
             </motion.div>
           ))}
         </nav>

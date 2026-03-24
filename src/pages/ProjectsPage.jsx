@@ -36,7 +36,7 @@ export function ProjectsPage() {
           <motion.p
            variants={fadeUp} 
            transition={baseTransition} 
-           className="max-w-xl text-sm leading-relaxed text-muted-foreground"
+           className="max-w-xl text-sm leading-relaxed text-muted-foreground text-justify"
           >
             Projetos desenvolvidos com foco em prática real,
             envolvendo construção de interfaces, APIs e integração

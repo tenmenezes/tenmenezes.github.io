@@ -27,11 +27,9 @@ export const projects = [
       { label: 'Ano', value: '2026' },
     ],
     highlights: [
-      'Migração completa do backend legado em PHP + MySQL para Next.js App Router com Prisma e Supabase',
       'Autenticação real com JWT em cookie HTTP-only e controle de acesso por perfis de usuário',
-      'Gerenciamento completo de chamados, usuários, histórico e dashboard com gráficos reais',
       'Upload de foto de perfil com Supabase Storage e aplicação preparada para deploy na Vercel',
-      'Logins',
+      'Logins - Caso queira explorar a aplicação online:',
       'Usuário comum: E-mail - user-comum@gmail.com | Senha - UserCom.123',
       'Usuário de suporte: E-mail - user-suporte@gmail.com | Senha - UserSup.123',
     ],

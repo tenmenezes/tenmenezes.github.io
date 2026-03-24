@@ -17,7 +17,7 @@ export function BlogCard({ post, showCategory = false }) {
           <h3 className="text-sm font-medium uppercase tracking-[0.2em] text-foreground">
             {title}
           </h3>
-          <p className="text-xs leading-relaxed text-muted-foreground">{excerpt}</p>
+          <p className="text-xs leading-relaxed text-muted-foreground text-justify">{excerpt}</p>
         </div>
 
         <div className="mt-4 flex items-center justify-between text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">

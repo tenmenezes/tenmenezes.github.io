@@ -72,7 +72,7 @@ export function ProcessTimeline() {
         <div className="grid gap-12 md:grid-cols-2">
 
           {/* EXPERIÊNCIA */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-justify">
             <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
               Experiência
             </p>
@@ -80,7 +80,7 @@ export function ProcessTimeline() {
           </div>
 
           {/* APRENDIZADO */}
-          <div className="space-y-4">
+          <div className="space-y-4 text-justify">
             <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
               Aprendizado
             </p>

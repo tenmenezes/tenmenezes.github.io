@@ -32,11 +32,12 @@ export function BlogPage() {
           <motion.p
             variants={fadeUp}
             transition={baseTransition}
-            className="max-w-xl text-sm leading-relaxed text-muted-foreground"
+            className="max-w-xl text-sm leading-relaxed text-muted-foreground text-justify"
           >
-            Anotações e aprendizados sobre desenvolvimento web,
-            arquitetura de sistemas e construção de APIs, com foco
-            em aplicações reais e boas práticas.
+            Anotações e aprendizados sobre meu desenvolvimento pessoal
+            como profissinal, a cada dia me qualificando
+            e me refinando mais para a área, me especializando
+            com foco em aplicações reais e boas práticas.
           </motion.p>
         </div>
       </motion.section>

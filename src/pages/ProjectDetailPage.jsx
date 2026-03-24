@@ -48,7 +48,7 @@ export function ProjectDetailPage() {
                 {title}
               </h1>
 
-              <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+              <p className="max-w-xl text-sm leading-relaxed text-muted-foreground text-justify">
                 {summary}
               </p>
 
@@ -79,7 +79,7 @@ export function ProjectDetailPage() {
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
                 Visão geral
               </p>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed text-muted-foreground text-justify">
                 {description}
               </p>
             </div>
@@ -92,7 +92,7 @@ export function ProjectDetailPage() {
                 {highlights.map((h) => (
                   <li
                     key={h}
-                    className="flex items-start gap-2 text-[0.7rem] leading-relaxed text-muted-foreground"
+                    className="flex items-start gap-2 text-[0.7rem] leading-relaxed text-muted-foreground text-justify"
                   >
                     <span className="mt-2 h-px w-4 flex-shrink-0 bg-border/70" />
                     {h}
