@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Github, Linkedin } from 'lucide-react'
+import { ArrowUpRight, CircleDot, Github, Linkedin } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { Badge } from '../ui/Badge'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
@@ -30,7 +30,7 @@ export function Hero() {
             variants={fadeUp}
             transition={{ ...baseTransition, delay: 0 }}
           >
-            <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600 animate-pulse" />
+            <CircleDot className="h-2.5 w-2.5 text-green-600 animate-pulse" />
             <span>Disponível para novos projetos</span>
           </motion.div>
 
@@ -68,7 +68,7 @@ export function Hero() {
           >
             <Link
               to="/projects"
-              className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-foreground px-3 py-3 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-foreground px-3 py-3 text-[0.6rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-xl"
             >
               <span className='text-sm'>Ver projetos</span>
               <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
@@ -104,7 +104,16 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...baseTransition, delay: 0.50 }}
         >
-          <div className="relative overflow-hidden rounded-xl border border-border/70 bg-background/80 p-6 shadow-[0_0_120px_rgba(0,0,0,0.14)] hover:-translate-y-2 transition-all duration-300">
+          <motion.div 
+           className="relative overflow-hidden rounded-xl border border-border/70 bg-background/80 p-6 shadow-xl hover:-translate-y-2 transition-all duration-300"
+           animate={{ y: [0, -50, 0] }}
+           transition={{
+            duration: 1.2,
+            times: [0, 0.35, 1],
+            ease: 'easeInOut',
+            repeat: Infinity,
+           }}
+          >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(0,0,0,0.45),_transparent_60%)]" />
             <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center">
               <div className="flex flex-col items-center gap-3 sm:items-start">
@@ -139,7 +148,7 @@ export function Hero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

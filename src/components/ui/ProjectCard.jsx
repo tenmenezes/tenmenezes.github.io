@@ -7,7 +7,7 @@ export function ProjectCard({ project }) {
 
   return (
     <Link to={`/projects/${slug}`} className="group block">
-      <div className="flex h-full flex-col justify-between rounded-xl border border-border/70 bg-background/80 p-4 shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]">
+      <div className="flex h-full flex-col justify-between rounded-xl border border-border/70 bg-background/80 p-4 shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
         <div className="space-y-3">
           <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
             <span>{role}</span>

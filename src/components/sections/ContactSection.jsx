@@ -36,7 +36,7 @@ export function ContactSection() {
     // honeypot
     if(form.company) return
 
-    // vaidação básica
+    // validação básica
     if(!form.name || !form.email || !form.project) {
       toast.info("Preencha todos os campos.")
       return
@@ -103,8 +103,8 @@ export function ContactSection() {
             <h2 className="text-lg font-medium uppercase tracking-[0.2em] text-foreground">
               Bora construir algo juntos?
             </h2>
-            <p className="max-w-md text-xs leading-relaxed text-muted-foreground">
-              Se você tem uma ideia, projeto ou precisa de alguém pra desenvolver, me chama!
+            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
+              Se você tem uma idéia, projeto ou precisa de alguém pra desenvolver, me chama!
               Gosto de trabalhar em soluções práticas e bem construídas. Respondo assim que possível.
             </p>
           </motion.div>
@@ -126,7 +126,7 @@ export function ContactSection() {
         </div>
 
         <motion.div
-          className="rounded-xl border border-border/70 bg-background/70 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.22)]"
+          className="rounded-xl border border-border/70 bg-background/70 p-5 shadow-2xl"
           variants={fadeUp}
           transition={{ ...baseTransition, delay: 0.15 }}
         >
@@ -215,13 +215,13 @@ export function ContactSection() {
             </div>
 
               <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-xs text-[0.6rem] leading-relaxed text-muted-foreground">
+                <p className="max-w-xs text-[0.7rem] leading-relaxed text-muted-foreground">
                   Ao enviar este formulário você concorda em ser contatado sobre
                   sua solicitação. Sem newsletters, sem follow-ups automáticos.
                 </p>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center rounded-xl border border-border bg-foreground px-6 py-2 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-[0_18px_60px_rgba(0,0,0,0.33)]"
+                  className="inline-flex items-center justify-center rounded-xl border border-border bg-foreground px-6 py-2 text-[0.7rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-xl"
                 >                    
                     Enviar mensagem
                 </button>

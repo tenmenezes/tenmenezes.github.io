@@ -18,10 +18,10 @@ export function ClientsStrip() {
             variants={fadeUp}
             transition={baseTransition}
           >
-            <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
+            <p className="text-[0.9rem] uppercase tracking-[0.3em] text-muted-foreground">
             Projetos selecionados
             </p>
-            <p className="max-w-sm text-[0.7rem] leading-relaxed text-muted-foreground">
+            <p className="max-w-sm text-[0.8rem] leading-relaxed text-muted-foreground">
               Aplicações e sistemas desenvolvidos com foco em prática real,
               organização de código e evolução contínua como desenvolvedor.
             </p>

@@ -1,6 +1,7 @@
 import { capabilities } from '../../data/site'
 import { motion } from 'framer-motion'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
+import { CircleDot } from 'lucide-react'
 
 export function Capabilities() {
   return (
@@ -33,7 +34,7 @@ export function Capabilities() {
                 >
                   Como posso contribuir
                 </h2>
-                <p className="max-w-sm text-[0.7rem] leading-relaxed text-muted-foreground text-justify">
+                <p className="max-w-sm text-[0.8rem] leading-relaxed text-muted-foreground text-justify">
                   Construo sistemas web, desde interfaces até APIs e banco de dados, sempre buscando código limpo e aplicações bem estruturadas.
                 </p>
               </div>
@@ -45,18 +46,18 @@ export function Capabilities() {
                   O que priorizo
                 </h2>
 
-                <ul className="space-y-2.5 text-[0.68rem] leading-relaxed text-muted-foreground">
+                <ul className="space-y-2.5 text-[0.8rem] leading-relaxed text-muted-foreground">
                   <li className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-                    <span className="mt-[0.38rem] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600 animate-pulse" />
+                    <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
                     <span>Clareza na interface e na experiência do usuário</span>
                   </li>
 
                   <li className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-                    <span className="mt-[0.38rem] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600 animate-pulse" />
+                    <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
                     <span>Organização de código e manutenção a longo prazo</span>
                   </li>
                   <li className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-                    <span className="mt-[0.38rem] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-green-600 animate-pulse" />
+                    <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
                     <span>Integração consistente entre as camadas da aplicação</span>
                   </li>
                 </ul>
@@ -92,7 +93,7 @@ export function Capabilities() {
                       <h3 className="text-[0.78rem] font-medium uppercase tracking-[0.22em] text-foreground">
                         {title}
                       </h3>
-                      <p className="max-w-xl text-[0.7rem] leading-relaxed text-muted-foreground text-justify">
+                      <p className="max-w-xl text-[0.8rem] leading-relaxed text-muted-foreground text-justify">
                         {description}
                       </p>
                     </div>

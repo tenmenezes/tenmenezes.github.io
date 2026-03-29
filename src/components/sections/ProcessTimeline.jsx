@@ -47,7 +47,7 @@ function Timeline({ data }) {
               <p className="text-[0.7rem] uppercase tracking-[0.25em] text-muted-foreground">
                 {number}. {title}
               </p>
-              <p className="max-w-xl text-[0.7rem] leading-relaxed text-muted-foreground">
+              <p className="max-w-xl text-[0.8rem] leading-relaxed text-muted-foreground">
                 {description}
               </p>
             </div>
@@ -73,7 +73,7 @@ export function ProcessTimeline() {
 
           {/* EXPERIÊNCIA */}
           <div className="space-y-4 text-justify">
-            <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
+            <p className="text-[0.8rem] uppercase tracking-[0.3em] text-muted-foreground">
               Experiência
             </p>
             <Timeline data={professionalTimeline} />
@@ -81,7 +81,7 @@ export function ProcessTimeline() {
 
           {/* APRENDIZADO */}
           <div className="space-y-4 text-justify">
-            <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
+            <p className="text-[0.8rem] uppercase tracking-[0.3em] text-muted-foreground">
               Aprendizado
             </p>
             <Timeline data={learningTimeline} />
