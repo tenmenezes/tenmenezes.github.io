@@ -6,6 +6,7 @@ import { ProjectsPage } from './pages/ProjectsPage'
 import { ProjectDetailPage } from './pages/ProjectDetailPage'
 import { BlogPage } from './pages/BlogPage'
 import { BlogPostPage } from './pages/BlogPostPage'
+import { NotFoundPage } from './pages/NotFoundPage'
 import { ScrollToTop } from './components/utils/ScrollToTop'
 import { ScrollToHash } from './components/utils/ScrollToHash'
 import { Toaster } from 'sonner'
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </div>
         <Footer />
