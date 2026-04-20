@@ -3,6 +3,7 @@ import { ProjectCard } from '../components/ui/ProjectCard'
 import { motion } from 'framer-motion'
 import { baseTransition, fadeUp, staggerContainer } from '../motionConfig'
 import { base } from 'framer-motion/client'
+import { DotPattern } from '../components/ui/dot-pattern'
 
 export function ProjectsPage() {
   return (
@@ -12,10 +13,14 @@ export function ProjectsPage() {
         variants={staggerContainer(0.08)}
         initial="hidden"
         animate="visible"
-        className="border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/30"
+        className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/30"
       >
+        <DotPattern
+          cr={1.2}
+          className="absolute inset-0 z-0 text-neutral-700/70 opacity-100 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)] dark:text-neutral-400/35"
+        />
 
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-0 lg:py-20">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-0 lg:py-20">
 
           <motion.p 
             variants={fadeUp}

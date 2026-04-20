@@ -5,8 +5,23 @@ import { Badge } from '../ui/Badge'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 import profileImg from '../../assets/perfil.jpeg'
 import { ScrambleText } from '../ui/TextScrambleEffect'
+import { AnimatedGridPattern } from '../ui/animated-grid-pattern'
 
-const skills = ['Interfaces Web', 'React.js', 'Next.js', 'Tailwind CSS', 'Backend', 'Java', 'Spring Boot', 'MySQL', 'PostgreSQL', 'Git']
+const skills = [
+  'Interfaces Web',
+  'React.js',
+  'Next.js',
+  'Tailwind CSS',
+  'Backend',
+  'Java',
+  'Spring Boot',
+  'Python',
+  'FastAPI',
+  'SQL Alchemy',
+  'MySQL',
+  'PostgreSQL',
+  'Git'
+]
 
 const stats = [
   { label: 'Experiência Pessoal', value: '+3 anos' },
@@ -16,8 +31,12 @@ const stats = [
 
 export function Hero() {
   return (
-    <section className="border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/40">
-      <div className="mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:px-0 lg:py-20">
+    <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/40">
+      <AnimatedGridPattern
+        maxOpacity={0.75}
+        className="absolute inset-0 z-0 fill-neutral-900/[0.12] stroke-neutral-900/[0.16] opacity-100 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)] dark:fill-white/[0.05] dark:stroke-white/[0.08]"
+      />
+      <div className="relative z-10 mx-auto flex max-w-5xl flex-col gap-10 px-4 py-16 sm:px-6 lg:flex-row lg:items-center lg:px-0 lg:py-20">
         {/* Left: Copy */}
         <motion.div
           className="flex-1 space-y-6"
@@ -104,15 +123,15 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...baseTransition, delay: 0.50 }}
         >
-          <motion.div 
-           className="relative overflow-hidden rounded-xl border border-border/70 bg-background/80 p-6 shadow-xl hover:-translate-y-2 transition-all duration-300"
-           animate={{ y: [0, -50, 0] }}
-           transition={{
-            duration: 1.2,
-            times: [0, 0.35, 1],
-            ease: 'easeInOut',
-            repeat: Infinity,
-           }}
+          <motion.div
+            className="relative overflow-hidden rounded-xl border border-white/10 bg-transparent backdrop-blur-lg p-6 shadow-xl hover:-translate-y-2 transition-all duration-300"
+            animate={{ y: [0, -50, 0] }}
+            transition={{
+              duration: 1.2,
+              times: [0, 0.35, 1],
+              ease: 'easeInOut',
+              repeat: Infinity,
+            }}
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.08),_transparent_55%),radial-gradient(circle_at_bottom,_rgba(0,0,0,0.45),_transparent_60%)]" />
             <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center">

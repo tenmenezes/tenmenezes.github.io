@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { posts } from '../data/blog'
+import { DotPattern } from '../components/ui/dot-pattern'
 
 export function BlogPostPage() {
   const { slug } = useParams()
@@ -34,8 +35,12 @@ export function BlogPostPage() {
   return (
     <main className="bg-background">
       {/* Header */}
-      <section className="border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/30">
-        <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-0 lg:py-20">
+      <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/30">
+        <DotPattern
+          cr={1.2}
+          className="absolute inset-0 z-0 text-neutral-700/70 opacity-100 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)] dark:text-neutral-400/35"
+        />
+        <div className="relative z-10 mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-0 lg:py-20">
           <Link
             to="/blog"
             className="mb-8 inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-foreground"

@@ -56,7 +56,7 @@ export const learningTimeline = [
 ]
 
 export const clients = [
-  'Desafio Técnico',
   'Help Desk System',
-  'SystemCheck'
+  'SystemCheck',
+  'RoadMap Agent'
 ]
