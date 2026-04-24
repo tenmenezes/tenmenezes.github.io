@@ -74,7 +74,7 @@ export function Hero() {
             variants={staggerContainer(0.08)}
           >
             {skills.map((s) => (
-              <motion.span key={s} variants={fadeUp} transition={baseTransition}>
+              <motion.span className='bg-transparent backdrop-blur-lg rounded-full shadow-xl' key={s} variants={fadeUp} transition={baseTransition}>
                 <Badge>{s}</Badge>
               </motion.span>
             ))}
