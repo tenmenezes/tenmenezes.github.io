@@ -13,19 +13,6 @@ import { Toaster } from 'sonner'
 import { useEffect } from 'react'
 
 export default function App() {
-
-  useEffect(() => {
-    const redirect = sessionStorage.redirect;
-
-    if (redirect) {
-
-      sessionStorage.removeItem("redirect");
-
-      window.history.replaceState(null, "", redirect);
-
-    }
-  }, []);
-
   return (
     <BrowserRouter>
       <ScrollToTop />

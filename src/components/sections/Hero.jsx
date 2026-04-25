@@ -121,7 +121,7 @@ export function Hero() {
           className="flex-1"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ ...baseTransition, delay: 0.50 }}
+          transition={{ ...baseTransition, delay: 0.2 }}
         >
           <motion.div
             className="relative overflow-hidden rounded-xl border border-white/10 bg-transparent backdrop-blur-lg p-6 shadow-xl hover:-translate-y-2 transition-all duration-300"

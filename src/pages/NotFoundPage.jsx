@@ -54,7 +54,7 @@ export function NotFoundPage() {
                             <motion.p
                                 variants={fadeUp}
                                 transition={{ ...baseTransition, delay: 0.04 }}
-                                className="mt-6 text-4xl font-medium leading-none tracking-[-0.08em] text-foreground sm:text-[6rem] lg:text-[7rem]"
+                                className="font-mono mt-6 text-4xl font-medium leading-none tracking-[-0.08em] text-foreground sm:text-[6rem] lg:text-[7rem]"
                             >
                                 404
                             </motion.p>
