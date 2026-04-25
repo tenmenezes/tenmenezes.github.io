@@ -16,9 +16,13 @@ export default function App() {
 
   useEffect(() => {
     const redirect = sessionStorage.redirect;
+
     if (redirect) {
+
       sessionStorage.removeItem("redirect");
+
       window.history.replaceState(null, "", redirect);
+
     }
   }, []);
 
@@ -35,7 +39,7 @@ export default function App() {
             <Route path="/projects/:slug" element={<ProjectDetailPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path='*' element={<NotFoundPage />}/>
+            <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </div>
         <Footer />
