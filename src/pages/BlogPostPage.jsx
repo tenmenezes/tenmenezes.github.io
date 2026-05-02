@@ -2,6 +2,7 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { posts } from '../data/blog'
 import { DotPattern } from '../components/ui/dot-pattern'
+import { MarkdownContent } from '../components/ui/MarkdownContent'
 
 export function BlogPostPage() {
   const { slug } = useParams()
@@ -67,7 +68,7 @@ export function BlogPostPage() {
       {/* Body */}
       <section className="border-b border-border/60">
         <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-0">
-          {renderContent(content)}
+          <MarkdownContent content={content} />
         </div>
       </section>
     </main>

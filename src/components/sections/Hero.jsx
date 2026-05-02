@@ -125,7 +125,7 @@ export function Hero() {
         >
           <motion.div
             className="relative overflow-hidden rounded-xl border border-white/10 bg-transparent backdrop-blur-lg p-6 shadow-xl hover:-translate-y-2 transition-all duration-300"
-            animate={{ y: [0, -50, 0] }}
+            animate={{ y: [0, -25, 0] }}
             transition={{
               duration: 1.2,
               times: [0, 0.35, 1],

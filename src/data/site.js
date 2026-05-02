@@ -22,15 +22,21 @@ export const capabilities = [
 export const professionalTimeline = [
   {
     number: '01',
-    title: 'Estagiário de Suporte Técnico',
+    title: 'Estagiário de Suporte Técnico  — 2024 / 2025',
     description:
       'Atuei com suporte a usuários, manutenção básica de sistemas e resolução de problemas técnicos em ambiente escolar.',
   },
   {
     number: '02',
-    title: 'Projetos Acadêmicos & Formação Técnica',
+    title: 'Projetos Acadêmicos  — 2024 / atual',
     description:
-      'Desenvolvimento de projetos práticos durante a graduação e ensino médio técnico, incluindo aplicações web, sistemas com banco de dados e estudos em desenvolvimento full stack. Experiência com tecnologias como React, Next, Node.js, PHP e MySQL, aplicadas em projetos acadêmicos e pessoais.',
+      'Desenvolvimento de projetos práticos durante a graduação e ensino médio técnico, incluindo aplicações web, sistemas com banco de dados e estudos em desenvolvimento Full-Stack.',
+  },
+  {
+    number: '03',
+    title: 'Estagiário Full-Stack — 2026 / atual',
+    description:
+      'Atuação no desenvolvimento e manutenção de uma plataforma de ensino digital, com implementação de funcionalidades envolvendo integração com banco de dados, criação de rotas de API e ajustes no Front-End para suporte às novas features.',
   },
 ]
 

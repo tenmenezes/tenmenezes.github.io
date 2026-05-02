@@ -8,43 +8,69 @@ export const posts = [
       'Como reduzir excessos visuais pode tornar interfaces web mais claras, consistentes e fáceis de manter.',
     readTime: '5 min read',
     content: `
-Existe algo em comum entre interfaces que continuam funcionando bem com o tempo: elas não dependem de exagero.
+Existe algo em comum entre interfaces que continuam funcionando bem com o tempo: **elas não dependem de exagero**.
 
-Menos cor. Menos ruído. Menos decisões visuais feitas só para preencher espaço.
+- Menos cor  
+- Menos ruído  
+- Menos decisões visuais feitas só para preencher espaço  
 
-Não se trata apenas de seguir uma estética minimalista. A ideia é reduzir a complexidade para que a interface fique mais clara, mais consistente e mais fácil de evoluir.
+Não se trata apenas de seguir uma estética minimalista. A ideia é **reduzir a complexidade** para que a interface fique mais clara, consistente e fácil de evoluir.
 
 ## O problema da complexidade visual
 
-Durante o desenvolvimento, é normal recorrer a soluções visuais rápidas. Um botão não chama atenção o suficiente, então recebe uma nova cor. Uma seção parece sem vida, então ganha mais contraste.
+Durante o desenvolvimento, é normal recorrer a soluções visuais rápidas.
 
-O problema é que cada nova escolha acaba criando uma regra nova, mesmo que isso não esteja explícito. Com o tempo, essas pequenas decisões se acumulam e deixam a interface mais difícil de organizar e manter.
+Um botão não chama atenção o suficiente → ganha uma nova cor.  
+Uma seção parece sem vida → ganha mais contraste.
 
-Isso também gera inconsistência entre componentes e torna mais complicado construir novas telas seguindo um padrão realmente sólido.
+O problema é que cada nova escolha acaba criando **uma regra nova**, mesmo que isso não esteja explícito.
+
+Com o tempo:
+- decisões se acumulam  
+- a interface fica mais difícil de manter  
+- surgem inconsistências entre componentes  
 
 ## Contenção como estratégia
 
 Trabalhar com uma paleta mais restrita obriga decisões mais conscientes.
 
-A hierarquia passa a depender mais da tipografia. O espaçamento começa a organizar melhor os blocos. Os componentes ganham mais consistência e ficam mais fáceis de reutilizar.
+- A hierarquia passa a depender mais da **tipografia**
+- O espaçamento organiza melhor os blocos
+- Componentes ficam mais consistentes e reutilizáveis
 
-Esse tipo de abordagem reduz a necessidade de correções constantes e torna o sistema mais previsível.
+Esse tipo de abordagem reduz correções constantes e torna o sistema mais previsível.
 
 ## O impacto no desenvolvimento
 
 Quando o design é mais contido, o desenvolvimento também tende a ficar mais simples.
 
-O código costuma ter menos variações, menos exceções e menos remendos ao longo do processo. Os componentes ficam mais fáceis de reaproveitar, entender e manter.
+O código costuma ter:
+- menos variações  
+- menos exceções  
+- menos remendos  
 
-No fim, isso reduz tanto a complexidade visual quanto a estrutural.
+Os componentes ficam mais fáceis de:
+- reaproveitar  
+- entender  
+- manter  
+
+No fim, isso reduz tanto a complexidade **visual** quanto **estrutural**.
 
 ## O que vale a pena manter
 
-Antes de adicionar uma nova cor ou uma nova variação, vale pensar se aquilo realmente resolve o problema ou só disfarça ele por um momento.
+Antes de adicionar uma nova cor ou variação, vale perguntar:
 
-Na maior parte das vezes, ajustar a estrutura, o espaçamento ou a hierarquia traz uma solução mais consistente.
+> Isso resolve o problema ou só disfarça?
 
-Interfaces que envelhecem bem geralmente não são as mais chamativas. São as que continuam claras, coerentes e fáceis de usar com o passar do tempo.
+Na maioria dos casos:
+- ajustar estrutura  
+- melhorar espaçamento  
+- refinar hierarquia  
+
+traz uma solução mais consistente.
+
+Interfaces que envelhecem bem não são as mais chamativas,  
+são as que continuam **claras, coerentes e fáceis de usar** com o tempo.
 `.trim(),
   },
   {
@@ -56,53 +82,96 @@ Interfaces que envelhecem bem geralmente não são as mais chamativas. São as q
       'Uma visão prática de como estruturar uma API REST com Java e Spring Boot, com foco em organização, clareza e evolução do projeto.',
     readTime: '6 min read',
     content: `
-Quando a gente começa a estudar Spring Boot, é comum querer apenas fazer a API funcionar.
+Quando a gente começa a estudar Spring Boot, é comum querer apenas **fazer a API funcionar**.
 
-Criar endpoints, conectar com o banco e testar tudo o mais rápido possível. Só que, conforme a aplicação cresce, o desafio deixa de ser apenas colocar tudo para rodar e passa a ser manter o projeto organizado.
+- Criar endpoints  
+- Conectar com o banco  
+- Testar o mais rápido possível  
+
+Mas conforme a aplicação cresce, o desafio muda:  
+não é mais só rodar, é **manter organizado**.
 
 ## Estrutura básica
 
-Uma API bem organizada separa responsabilidades de forma clara.
+Uma API bem organizada separa responsabilidades de forma clara:
 
-O controller lida com a requisição, o service concentra a lógica de negócio e o repository cuida da comunicação com o banco de dados.
+- **Controller:** Lida com a requisição  
+- **Service:** Contém a lógica de negócio  
+- **Repository:** Comunicação com o banco  
 
-Essa divisão ajuda bastante na manutenção e evita que o código fique confuso conforme novas funcionalidades vão sendo adicionadas.
+Essa divisão:
+- facilita manutenção  
+- evita código confuso  
+- ajuda na escalabilidade  
 
 ## Criando endpoints REST
 
-Uma API REST costuma seguir padrões simples.
+Uma API REST segue padrões simples:
 
-Rotas para listar, buscar por id, criar, atualizar e remover dados precisam ser consistentes. Mais importante do que decorar cada método é manter um padrão claro em toda a aplicação.
+- \`GET /items\`
+- \`GET /items/{id}\`
+- \`POST /items\`
+- \`PUT /items/{id}\`
+- \`DELETE /items/{id}\`
 
-Isso deixa a API mais previsível para quem vai consumir e também para quem vai dar manutenção depois.
+Mais importante que decorar métodos é manter **consistência**.
+
+Isso deixa a API:
+- previsível para quem consome  
+- fácil de manter  
 
 ## O papel do Service
 
-Um erro bem comum no começo é colocar toda a lógica dentro do controller.
+Erro comum:
 
-O service existe justamente para centralizar regras de negócio, validações e processamento de dados. Isso deixa o código mais limpo, mais organizado e mais reaproveitável.
+> colocar toda a lógica no controller
 
-Além disso, facilita muito quando o projeto começa a crescer.
+O \`service\` existe para:
+- centralizar regras de negócio  
+- validar dados  
+- processar informações  
+
+Resultado:
+- código mais limpo  
+- melhor organização  
+- maior reaproveitamento  
 
 ## Integração com banco
 
-Com Spring Data JPA, trabalhar com banco de dados se torna mais direto.
+Com **Spring Data JPA**, trabalhar com banco fica mais direto.
 
-Operações básicas como salvar, buscar e deletar já ficam bem mais simples, o que permite focar mais na lógica da aplicação e menos na escrita manual de consultas para tudo.
+Exemplo:
 
-Isso acelera o desenvolvimento e ajuda bastante em projetos iniciais.
+\`\`\`java
+repository.save(entity);
+repository.findById(id);
+repository.delete(entity);
+\`\`\`
+
+Isso reduz código boilerplate e permite focar no que importa:  
+**a lógica da aplicação**.
 
 ## Pensando além do básico
 
-Mesmo em aplicações menores, vale a pena pensar em organização desde o início.
+Mesmo em projetos pequenos, vale investir em:
 
-Tratamento de erros, padronização de respostas e separação de responsabilidades fazem diferença de verdade quando o projeto começa a ganhar novas camadas e mais regras.
+- tratamento de erros  
+- padronização de respostas  
+- separação de responsabilidades  
+
+Esses pontos fazem diferença quando o sistema cresce.
 
 ## Conclusão
 
-Aprender Spring Boot não é só criar endpoints e conectar com o banco.
+Aprender Spring Boot não é só criar endpoints.
 
-É entender como estruturar uma aplicação backend de um jeito que continue clara, organizada e fácil de evoluir com o tempo.
+É entender como estruturar uma aplicação backend que seja:
+
+- clara  
+- organizada  
+- fácil de evoluir  
+
+com o passar do tempo.
 `.trim(),
   },
 ]
