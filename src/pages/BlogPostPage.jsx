@@ -47,7 +47,7 @@ export function BlogPostPage() {
             className="mb-8 inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3 w-3" />
-            Todos os textos
+            Todas as anotações
           </Link>
 
           <div className="space-y-4">
