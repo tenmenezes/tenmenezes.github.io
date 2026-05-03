@@ -3,6 +3,7 @@ import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
 import { projects } from '../data/projects'
 import { SmallBadge } from '../components/ui/Badge'
 import { DotPattern } from '../components/ui/dot-pattern'
+import { DeviceFrame } from '@/components/ui/DeviceFrame'
 
 export function ProjectDetailPage() {
   const { slug } = useParams()
@@ -114,17 +115,25 @@ export function ProjectDetailPage() {
         <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-0">
           <div className="group relative overflow-hidden rounded-xl border border-border/60 bg-muted/20">
             <div className="aspect-video w-full">
-              <img
-                src={preview}
-                alt={`Prévia do projeto ${title}`}
-                className={`h-full w-full object-cover ${previewPosition ?? 'object-center'} transition-transform duration-500 group-hover:scale-[1.02]`}
-              />
+              {liveURL ? (
+                <DeviceFrame url={liveURL} />
+              ) : (
+                <img
+                  src={preview}
+                  alt={`Prévia do projeto ${title}`}
+                  className={`h-full w-full object-cover ${previewPosition ?? "object-center"
+                    }`}
+                />
+              )}
             </div>
+          </div>
 
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-background/10 to-transparent" />
 
-            {/* overlay desktop */}
-            <div className="absolute inset-0 hidden items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:flex">
+          {/* overlay desktop */}
+          <div className="pointer-events-none absolute inset-0 hidden items-center justify-center gap-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:flex">
+
+            <div className="pointer-events-auto flex gap-3">
               {liveURL && (
                 <a
                   href={liveURL}
