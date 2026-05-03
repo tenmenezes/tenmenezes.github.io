@@ -18,11 +18,20 @@ export function DeviceFrame({ url }) {
             </div>
 
             {!error ? (
-                <iframe
-                    src={url}
-                    className="w-full h-[calc(100%-32px)] bg-white"
-                    onError={() => setError(true)}
-                />
+                <div className="h-[calc(100%-32px)] overflow-y-auto">
+                    <iframe
+                        src={url}
+                        className="
+                    w-full 
+                    h-[1200px] 
+                    md:h-full 
+                    bg-white 
+                    pointer-events-none 
+                    md:pointer-events-auto
+                  "
+                        onError={() => setError(true)}
+                    />
+                </div>
             ) : (
                 <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
                     Preview indisponível
