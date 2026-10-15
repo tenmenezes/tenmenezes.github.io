@@ -100,7 +100,9 @@ const pt = {
     consent:
       'Ao enviar este formulário você concorda em ser contatado sobre sua solicitação. Sem newsletters, sem follow-ups automáticos.',
     submit: 'Enviar mensagem',
+    notConfigured: 'Modo dev: reCAPTCHA/EmailJS não configurados. Variáveis ausentes no .env: {{vars}}',
     toast: {
+      notConfigured: 'Formulário indisponível no momento. Envie um e-mail direto.',
       fillAll: 'Preencha todos os campos.',
       invalidEmail: 'E-mail inválido',
       minLength: 'A mensagem deve conter pelo menos 10 caracteres.',

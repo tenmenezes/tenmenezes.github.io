@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { LoaderPinwheelIcon } from 'lucide-react';
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
@@ -21,6 +21,7 @@ export function ContactSection() {
 
   const [sent, setSent] = useState(false)
   const [captcha, setCaptcha] = useState(null)
+  const recaptchaRef = useRef(null)
 
   // o widget remonta ao trocar de idioma, então o token anterior deixa de valer
   useEffect(() => setCaptcha(null), [lang])
@@ -32,6 +33,21 @@ export function ContactSection() {
   const templateId = import.meta.env.VITE_TEMPLATE_ID
   const publicKey = import.meta.env.VITE_PUBLIC_KEY
   const captchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY
+
+  // sem essas variáveis (ex.: rodando local sem .env) o envio não tem como funcionar
+  const missingEnv = Object.entries({
+    VITE_SERVICE_ID: serviceId,
+    VITE_TEMPLATE_ID: templateId,
+    VITE_PUBLIC_KEY: publicKey,
+    VITE_RECAPTCHA_SITE_KEY: captchaSiteKey,
+  })
+    .filter(([, value]) => !value)
+    .map(([name]) => name)
+
+  const resetCaptcha = () => {
+    recaptchaRef.current?.reset()
+    setCaptcha(null)
+  }
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }))
@@ -61,6 +77,13 @@ export function ContactSection() {
       return
     }
 
+    // configuração do EmailJS / reCAPTCHA
+    if(missingEnv.length) {
+      console.error(`[Contato] Variáveis de ambiente ausentes: ${missingEnv.join(', ')}`)
+      toast.error(t('contact.toast.notConfigured'))
+      return
+    }
+
     // Verificação de Captcha
     if(!captcha) {
       toast.warning(t('contact.toast.captcha'))
@@ -74,6 +97,8 @@ export function ContactSection() {
           from_name: form.name,
           from_email: form.email,
           message: form.project,
+          // token validado pelo EmailJS quando a verificação de reCAPTCHA está ativa no template
+          'g-recaptcha-response': captcha,
         },
         publicKey
       )
@@ -85,7 +110,15 @@ export function ContactSection() {
           setSent(true)
           return t('contact.toast.success')
         },
-        error: t('contact.toast.error')
+        error: (err) => {
+          // o EmailJS devolve { status, text } com o motivo real da falha
+          console.error('[EmailJS]', err?.status, err?.text ?? err)
+          // o token do reCAPTCHA é de uso único, então precisa ser renovado para tentar de novo
+          resetCaptcha()
+          return import.meta.env.DEV && err?.status
+            ? `${t('contact.toast.error')} (${err.status}: ${err.text})`
+            : t('contact.toast.error')
+        }
       })
   }
 
@@ -214,13 +247,24 @@ export function ContactSection() {
             {/* CAPTCHA */}
 
             <div className='sm:col-span-2'>
-              {/* key força remontar o widget no idioma escolhido */}
-              <ReCAPTCHA
-                key={lang}
-                hl={lang === 'en' ? 'en' : 'pt-BR'}
-                sitekey={captchaSiteKey}
-                onChange={(value) => setCaptcha(value)}
-              />
+              {/* sem sitekey o grecaptcha lança erro a cada re-render e derruba a página inteira */}
+              {captchaSiteKey ? (
+                // key força remontar o widget no idioma escolhido
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  key={lang}
+                  hl={lang === 'en' ? 'en' : 'pt-BR'}
+                  sitekey={captchaSiteKey}
+                  onChange={(value) => setCaptcha(value)}
+                  onExpired={() => setCaptcha(null)}
+                />
+              ) : (
+                import.meta.env.DEV && (
+                  <p className="rounded-md border border-dashed border-border/70 px-3 py-2 text-[0.7rem] text-muted-foreground">
+                    {t('contact.notConfigured', { vars: missingEnv.join(', ') })}
+                  </p>
+                )
+              )}
             </div>
 
               <div className="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">

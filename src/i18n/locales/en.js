@@ -100,7 +100,9 @@ const en = {
     consent:
       'By submitting this form you agree to be contacted about your request. No newsletters, no automated follow-ups.',
     submit: 'Send message',
+    notConfigured: 'Dev mode: reCAPTCHA/EmailJS not configured. Missing .env variables: {{vars}}',
     toast: {
+      notConfigured: 'Form unavailable right now. Please send an email directly.',
       fillAll: 'Please fill in all fields.',
       invalidEmail: 'Invalid email',
       minLength: 'The message must be at least 10 characters long.',
