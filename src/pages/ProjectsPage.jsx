@@ -1,11 +1,13 @@
 import { projects } from '../data/projects'
 import { ProjectCard } from '../components/ui/ProjectCard'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { baseTransition, fadeUp, staggerContainer } from '../motionConfig'
-import { base } from 'framer-motion/client'
 import { DotPattern } from '../components/ui/dot-pattern'
 
 export function ProjectsPage() {
+  const { t } = useTranslation()
+
   return (
     <main className="border-b border-border/60 bg-background">
       {/* Hero */}
@@ -27,7 +29,7 @@ export function ProjectsPage() {
             transition={baseTransition}
             className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground"
           >
-            Trabalhos selecionados
+            {t('projects.eyebrow')}
           </motion.p>
 
           <motion.h1
@@ -35,7 +37,7 @@ export function ProjectsPage() {
            transition={baseTransition} 
            className="mb-4 text-2xl font-medium uppercase tracking-[0.2em] text-foreground"
           >
-            Projetos
+            {t('projects.title')}
           </motion.h1>
 
           <motion.p
@@ -43,10 +45,7 @@ export function ProjectsPage() {
            transition={baseTransition} 
            className="max-w-xl text-sm leading-relaxed text-muted-foreground text-justify"
           >
-            Projetos desenvolvidos com foco em prática real,
-            envolvendo construção de interfaces, APIs e integração
-            com banco de dados, sempre buscando código organizado
-            e aplicações bem estruturadas.
+            {t('projects.description')}
           </motion.p>
 
         </div>

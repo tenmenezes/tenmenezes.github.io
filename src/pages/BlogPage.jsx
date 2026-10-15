@@ -1,10 +1,13 @@
 import { posts } from '../data/blog'
 import { BlogCard } from '../components/ui/BlogCard'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { baseTransition, fadeUp, staggerContainer } from '../motionConfig'
 import { DotPattern } from '../components/ui/dot-pattern'
 
 export function BlogPage() {
+  const { t } = useTranslation()
+
   return (
     <main className="border-b border-border/60 bg-background">
 
@@ -25,24 +28,21 @@ export function BlogPage() {
             transition={baseTransition}
             className="mb-3 text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground"
           >
-            Aprendizados
+            {t('blog.pageEyebrow')}
           </motion.p>
           <motion.h1
             variants={fadeUp}
             transition={baseTransition}
             className="mb-4 text-2xl font-medium uppercase tracking-[0.2em] text-foreground"
           >
-            Anotações
+            {t('blog.title')}
           </motion.h1>
           <motion.p
             variants={fadeUp}
             transition={baseTransition}
             className="max-w-xl text-sm leading-relaxed text-muted-foreground text-justify"
           >
-            Anotações e aprendizados sobre meu desenvolvimento pessoal
-            como profissinal, a cada dia me qualificando
-            e me refinando mais para a área, me especializando
-            com foco em aplicações reais e boas práticas.
+            {t('blog.description')}
           </motion.p>
         </div>
       </motion.section>

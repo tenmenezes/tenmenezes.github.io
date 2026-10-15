@@ -2,17 +2,20 @@ import { projects } from '../../data/projects'
 import { SectionHeader } from '../ui/SectionHeader'
 import { ProjectCard } from '../ui/ProjectCard'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 
 export function ProjectsPreview() {
+  const { t } = useTranslation()
+
   return (
     <section className="border-b border-border/60 bg-background">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-0 lg:py-14">
         <SectionHeader
-          eyebrow="Trabalhos selecionados"
-          title="Projetos"
+          eyebrow={t('projects.eyebrow')}
+          title={t('projects.title')}
           linkTo="/projects"
-          linkLabel="Ver todos"
+          linkLabel={t('common.seeAll')}
         />
         <motion.div
           className="grid gap-4 md:grid-cols-3"

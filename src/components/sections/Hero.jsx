@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, CircleDot, Github, Linkedin } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Trans, useTranslation } from 'react-i18next'
+import { useLocalized } from '../../hooks/useLocalized'
 import { Badge } from '../ui/Badge'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 import profileImg from '../../assets/perfil.jpeg'
 import { ScrambleText } from '../ui/TextScrambleEffect'
 import { AnimatedGridPattern } from '../ui/animated-grid-pattern'
 
+// Stack principal atual, exibida em destaque no início da lista
+const focusSkills = ['C#', '.NET', 'ASP.NET Core', 'Entity Framework']
+
 const skills = [
-  'Interfaces Web',
+  { pt: 'Interfaces Web', en: 'Web Interfaces' },
   'React.js',
   'Next.js',
   'Tailwind CSS',
@@ -23,13 +28,16 @@ const skills = [
   'Git'
 ]
 
-const stats = [
-  { label: 'Experiência Pessoal', value: '+3 anos' },
-  { label: 'Projetos Feitos', value: '+5' },
-  { label: 'Foco', value: 'Web · Backend' },
-]
-
 export function Hero() {
+  const { t } = useTranslation()
+  const { l } = useLocalized()
+
+  const stats = [
+    { label: t('hero.stats.experience'), value: t('hero.stats.experienceValue') },
+    { label: t('hero.stats.projects'), value: '+5' },
+    { label: t('hero.stats.focus'), value: t('hero.stats.focusValue') },
+  ]
+
   return (
     <section className="relative overflow-hidden border-b border-border/60 bg-gradient-to-b from-background via-background to-muted/40">
       <AnimatedGridPattern
@@ -50,7 +58,7 @@ export function Hero() {
             transition={{ ...baseTransition, delay: 0 }}
           >
             <CircleDot className="h-2.5 w-2.5 text-green-600 animate-pulse" />
-            <span>Disponível para novos projetos</span>
+            <span>{t('hero.available')}</span>
           </motion.div>
 
           <motion.div
@@ -60,12 +68,14 @@ export function Hero() {
           >
             <h1 className="text-3xl font-medium uppercase tracking-[0.15em] text-foreground sm:text-4xl">
               <span className="font-mono">
-                <ScrambleText text="Desenvolvedor Web & Backend" />
+                <ScrambleText text={t('hero.title')} />
               </span>
             </h1>
             <p className="max-w-xl text-sm leading-relaxed text-foreground text-justify">
-              Sou desenvolvedor focado na criação de sistemas web e aplicações backend,
-              transformando ideias em aplicações funcionais, escaláveis e bem estruturadas.
+              <Trans
+                i18nKey="hero.subtitle"
+                components={{ strong: <strong className="font-semibold text-foreground" /> }}
+              />
             </p>
           </motion.div>
 
@@ -73,9 +83,14 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3 text-[0.7rem] uppercase tracking-[0.2em]"
             variants={staggerContainer(0.08)}
           >
+            {focusSkills.map((s) => (
+              <motion.span className='rounded-full shadow-xl' key={s} variants={fadeUp} transition={baseTransition}>
+                <Badge variant="highlight">{s}</Badge>
+              </motion.span>
+            ))}
             {skills.map((s) => (
-              <motion.span className='bg-transparent backdrop-blur-lg rounded-full shadow-xl' key={s} variants={fadeUp} transition={baseTransition}>
-                <Badge>{s}</Badge>
+              <motion.span className='bg-transparent backdrop-blur-lg rounded-full shadow-xl' key={l(s)} variants={fadeUp} transition={baseTransition}>
+                <Badge>{l(s)}</Badge>
               </motion.span>
             ))}
           </motion.div>
@@ -89,7 +104,7 @@ export function Hero() {
               to="/projects"
               className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-foreground px-3 py-3 text-[0.6rem] font-medium uppercase tracking-[0.25em] text-background shadow-sm transition-all hover:bg-background hover:text-foreground hover:shadow-xl"
             >
-              <span className='text-sm'>Ver projetos</span>
+              <span className='text-sm'>{t('hero.cta')}</span>
               <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover:-translate-y-[1px] group-hover:translate-x-[1px]" />
             </Link>
 
@@ -139,7 +154,7 @@ export function Hero() {
                 <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-border/70 bg-muted/40">
                   <img
                     src={profileImg}
-                    alt="Foto de perfil"
+                    alt={t('common.profilePhoto')}
                     className="h-full w-full object-cover scale-125"
                     loading="lazy"
                     decoding="async"
@@ -147,15 +162,13 @@ export function Hero() {
                 </div>
                 <div className="text-center text-xs uppercase tracking-[0.25em] text-muted-foreground sm:text-left">
                   <div className="font-medium text-foreground">Yago Menezes</div>
-                  <div>Rio de Janeiro - RJ</div>
+                  <div>{t('hero.location')}</div>
                 </div>
               </div>
 
               <div className="flex-1 space-y-4">
                 <p className="max-w-xl text-sm leading-relaxed text-gray-500 text-justify">
-                  Gosto de transformar ideias em sistemas reais,
-                  cuidando tanto da lógica quanto da interface para
-                  entregar algo que funcione bem de verdade.
+                  {t('hero.bio')}
                 </p>
                 <div className="grid grid-cols-3 gap-3 text-[0.65rem] uppercase tracking-[0.2em] text-muted-foreground">
                   {stats.map(({ label, value }) => (

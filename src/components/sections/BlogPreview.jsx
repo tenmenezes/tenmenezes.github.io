@@ -2,17 +2,20 @@ import { posts } from '../../data/blog'
 import { SectionHeader } from '../ui/SectionHeader'
 import { BlogCard } from '../ui/BlogCard'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 
 export function BlogPreview() {
+  const { t } = useTranslation()
+
   return (
     <section className="border-b border-border/60 bg-background">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-0 lg:py-14">
         <SectionHeader
-          eyebrow="Aprendizado"
-          title="Anotações"
+          eyebrow={t('blog.eyebrow')}
+          title={t('blog.title')}
           linkTo="/blog"
-          linkLabel="Ver todos"
+          linkLabel={t('common.seeAll')}
         />
         <motion.div
           className="grid gap-4 md:grid-cols-2"

@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { useLocalized } from '../../hooks/useLocalized'
 import { SmallBadge } from '../ui/Badge'
 
 export function ProjectCard({ project }) {
+  const { t } = useTranslation()
+  const { l } = useLocalized()
   const { slug, title, role, year, tags } = project
 
   return (
@@ -14,7 +18,7 @@ export function ProjectCard({ project }) {
             <span className="text-muted-foreground/70">{year}</span>
           </div>
           <h3 className="text-sm font-medium uppercase tracking-[0.2em] text-foreground">
-            {title}
+            {l(title)}
           </h3>
           <div className="flex flex-wrap gap-1">
             {tags.map((tag) => (
@@ -24,7 +28,7 @@ export function ProjectCard({ project }) {
         </div>
 
         <div className="mt-4 flex items-center justify-between text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
-          <span>Visualizar projeto</span>
+          <span>{t('projects.viewProject')}</span>
           <span className="flex h-6 w-6 items-center justify-center rounded-full border border-border/60 bg-background/80 transition-colors group-hover:bg-foreground group-hover:text-background">
             <ArrowUpRight className="h-3 w-3" />
           </span>

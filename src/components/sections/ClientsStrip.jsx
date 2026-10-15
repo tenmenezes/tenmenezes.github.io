@@ -1,8 +1,11 @@
 import { clients } from '../../data/site'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 
 export function ClientsStrip() {
+  const { t } = useTranslation()
+
   return (
     <section className="border-b border-border/60 bg-background">
       <motion.div
@@ -19,11 +22,10 @@ export function ClientsStrip() {
             transition={baseTransition}
           >
             <p className="text-[0.9rem] uppercase tracking-[0.3em] text-muted-foreground">
-            Projetos selecionados
+              {t('clients.title')}
             </p>
             <p className="max-w-sm text-[0.8rem] leading-relaxed text-muted-foreground">
-              Aplicações e sistemas desenvolvidos com foco em prática real,
-              organização de código e evolução contínua como desenvolvedor.
+              {t('clients.description')}
             </p>
           </motion.div>
 

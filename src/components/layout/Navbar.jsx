@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import { useTheme } from '../../hooks/useTheme'
 import { Button } from '../ui/Button'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
@@ -9,16 +10,20 @@ import { AnimatedNavLink } from '../ui/AnimatedNavLink'
 import profileImg from '../../assets/perfil.jpeg'
 
 const navLinks = [
-  { to: '/', label: 'Início' },
-  { to: '/projects', label: 'Projetos' },
-  { to: '/blog', label: 'Blog' },
-  { to: '/#contact', label: 'Contato' },
+  { to: '/', labelKey: 'nav.home' },
+  { to: '/projects', labelKey: 'nav.projects' },
+  { to: '/blog', labelKey: 'nav.blog' },
+  { to: '/#contact', labelKey: 'nav.contact' },
 ]
 
 export function Navbar() {
   const { isDark, toggle } = useTheme()
+  const { t, i18n } = useTranslation()
   const { pathname } = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const lang = i18n.resolvedLanguage
+  const toggleLanguage = () => i18n.changeLanguage(lang === 'pt' ? 'en' : 'pt')
 
   return (
     <motion.header
@@ -34,7 +39,7 @@ export function Navbar() {
             <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border/60 bg-muted">
               <img
                 src={profileImg}
-                alt="Foto de perfil"
+                alt={t('common.profilePhoto')}
                 className="h-full w-full object-cover scale-125"
                 loading="eager"
                 decoding="async"
@@ -42,21 +47,21 @@ export function Navbar() {
             </div>
             <div className="flex flex-col text-xs uppercase tracking-[0.25em] text-muted-foreground">
               <span className="leading-none">Ten Menezes</span>
-              <span className="leading-none text-foreground">Portfólio</span>
+              <span className="leading-none text-foreground">{t('nav.portfolio')}</span>
             </div>
           </Link>
         </motion.div>
 
         {/* Desktop Nav */}
         <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map(({ to, label }, index) => (
+          {navLinks.map(({ to, labelKey }, index) => (
             <motion.div
               key={to}
               variants={fadeUp}
               transition={{ ...baseTransition, delay: 0.04 * (index + 1) }}
             >
               <AnimatedNavLink to={to} isActive={pathname === to}>
-                {label}
+                {t(labelKey)}
               </AnimatedNavLink>
             </motion.div>
           ))}
@@ -72,7 +77,7 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             onClick={toggle}
-            aria-label={isDark ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
+            aria-label={isDark ? t('nav.themeToLight') : t('nav.themeToDark')}
           >
             <motion.span
               key={isDark ? 'sun' : 'moon'}
@@ -88,18 +93,36 @@ export function Navbar() {
             </motion.span>
           </Button>
 
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleLanguage}
+            aria-label={t('nav.switchLanguage')}
+          >
+            <motion.span
+              key={lang}
+              className="text-[0.6rem] font-medium uppercase tracking-[0.15em]"
+              initial={{ opacity: 0, rotate: -90, y: -4 }}
+              animate={{ opacity: 1, rotate: 0, y: 0 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+            >
+              {lang}
+            </motion.span>
+          </Button>
+
           <Link
             to="/#contact"
             className="hidden rounded-xl border border-border/70 bg-background/60 px-3 py-3 text-[0.65rem] font-medium uppercase tracking-[0.25em] transition-colors hover:bg-foreground hover:text-background md:inline-flex"
           >
-            Vamos conversar
+            {t('nav.letsTalk')}
           </Link>
 
           {/* Mobile hamburger */}
           <button
             className="flex h-9 w-9 items-center justify-center md:hidden"
             onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+            aria-expanded={mobileOpen}
           >
             <motion.span
               key={mobileOpen ? 'close' : 'menu'}
@@ -125,7 +148,7 @@ export function Navbar() {
             className="border-t border-border/60 bg-background/95 backdrop-blur-xl md:hidden"
           >
             <nav className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-4">
-              {navLinks.map(({ to, label }, index) => (
+              {navLinks.map(({ to, labelKey }, index) => (
                 <motion.div
                   key={to}
                   initial={{ opacity: 0, y: -6 }}
@@ -139,7 +162,7 @@ export function Navbar() {
                     className={`block py-2 text-xs uppercase tracking-[0.25em] transition-colors hover:text-foreground ${pathname === to ? 'text-foreground' : 'text-muted-foreground'
                       }`}
                   >
-                    {label}
+                    {t(labelKey)}
                   </Link>
                 </motion.div>
               ))}

@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { useLocalized } from '../../hooks/useLocalized'
 
 export function BlogCard({ post, showCategory = false }) {
+  const { t } = useTranslation()
+  const { l, formatDate } = useLocalized()
   const { slug, title, date, category, excerpt } = post
 
   return (
@@ -9,19 +13,19 @@ export function BlogCard({ post, showCategory = false }) {
       <div className="flex h-full flex-col justify-between rounded-xl border border-border/70 bg-background/80 p-4 shadow-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
         <div className="space-y-2">
           <div className="flex items-center justify-between text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground">
-            <span>{date}</span>
+            <span>{formatDate(date)}</span>
             {showCategory && (
-              <span className="text-muted-foreground/70">{category}</span>
+              <span className="text-muted-foreground/70">{l(category)}</span>
             )}
           </div>
           <h3 className="text-sm font-medium uppercase tracking-[0.2em] text-foreground">
-            {title}
+            {l(title)}
           </h3>
-          <p className="text-sm leading-relaxed text-muted-foreground text-justify">{excerpt}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground text-justify">{l(excerpt)}</p>
         </div>
 
         <div className="mt-4 flex items-center justify-between text-[0.6rem] uppercase tracking-[0.2em] text-muted-foreground">
-          <span>Ler anotação</span>
+          <span>{t('blog.readNote')}</span>
           <span className="flex h-6 w-6 items-center justify-center rounded-full border border-border/60 bg-background/80 transition-colors group-hover:bg-foreground group-hover:text-background">
             <ArrowUpRight className="h-3 w-3" />
           </span>

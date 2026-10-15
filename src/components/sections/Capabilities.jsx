@@ -2,8 +2,14 @@ import { capabilities } from '../../data/site'
 import { motion } from 'framer-motion'
 import { fadeUp, baseTransition, staggerContainer } from '../../motionConfig'
 import { CircleDot } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
+import { useLocalized } from '../../hooks/useLocalized'
 
 export function Capabilities() {
+  const { t } = useTranslation()
+  const { l } = useLocalized()
+  const priorities = t('capabilities.priorities', { returnObjects: true })
+
   return (
     <section
       className="border-b border-border/60 "
@@ -24,7 +30,7 @@ export function Capabilities() {
           >
             <div className="space-y-6">
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
-                Capacidades
+                {t('capabilities.eyebrow')}
               </p>
 
               <div className="space-y-3">
@@ -32,10 +38,10 @@ export function Capabilities() {
                   id="capabilities-title"
                   className="text-lg font-medium uppercase tracking-[0.2em] text-foreground"
                 >
-                  Como posso contribuir
+                  {t('capabilities.title')}
                 </h2>
                 <p className="max-w-sm text-[0.8rem] leading-relaxed text-muted-foreground text-justify">
-                  Construo sistemas web, desde interfaces até APIs e banco de dados, sempre buscando código limpo e aplicações bem estruturadas.
+                  {t('capabilities.description')}
                 </p>
               </div>
 
@@ -43,23 +49,16 @@ export function Capabilities() {
                 <h2
                   className="text-lg font-medium uppercase tracking-[0.2em] text-foreground"
                 >
-                  O que priorizo
+                  {t('capabilities.prioritiesTitle')}
                 </h2>
 
                 <ul className="space-y-2.5 text-[0.8rem] leading-relaxed text-muted-foreground">
-                  <li className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-                    <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
-                    <span>Clareza na interface e na experiência do usuário</span>
-                  </li>
-
-                  <li className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-                    <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
-                    <span>Organização de código e manutenção a longo prazo</span>
-                  </li>
-                  <li className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
-                    <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
-                    <span>Integração consistente entre as camadas da aplicação</span>
-                  </li>
+                  {priorities.map((priority) => (
+                    <li key={priority} className="flex items-start gap-3 rounded-xl border border-border/60 bg-background/60 px-4 py-3 shadow-[0_8px_24px_rgba(0,0,0,0.04)]">
+                      <CircleDot className="mt-[0.38rem] h-2.5 w-2.5 flex-shrink-0 rounded-full text-green-600 animate-pulse" />
+                      <span>{priority}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -76,7 +75,7 @@ export function Capabilities() {
             >
               {capabilities.map(({ title, description, items }, index) => (
                 <motion.article
-                  key={title}
+                  key={index}
                   variants={fadeUp}
                   transition={{
                     ...baseTransition,
@@ -91,18 +90,18 @@ export function Capabilities() {
                   <div className="space-y-3">
                     <div className="space-y-2">
                       <h3 className="text-[0.78rem] font-medium uppercase tracking-[0.22em] text-foreground">
-                        {title}
+                        {l(title)}
                       </h3>
                       <p className="max-w-xl text-[0.8rem] leading-relaxed text-muted-foreground text-justify">
-                        {description}
+                        {l(description)}
                       </p>
                     </div>
 
                     <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[0.65rem] uppercase tracking-[0.18em] text-muted-foreground">
                       {items.map((item) => (
-                        <li key={item} className="flex items-center gap-2">
+                        <li key={l(item)} className="flex items-center gap-2">
                           <span className="h-px w-3 bg-border/70" />
-                          <span>{item}</span>
+                          <span>{l(item)}</span>
                         </li>
                       ))}
                     </ul>

@@ -1,10 +1,13 @@
 import { motion } from 'framer-motion'
 import { ArrowLeft, Compass } from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { baseTransition, fadeUp, staggerContainer } from '../motionConfig'
 
 export function NotFoundPage() {
     const { pathname } = useLocation()
+    const { t } = useTranslation()
+    const suggestions = t('notFound.suggestions', { returnObjects: true })
 
     return (
         <main className="relative overflow-hidden border-b border-border/60 bg-background">
@@ -48,7 +51,7 @@ export function NotFoundPage() {
                                 >
                                     <Compass className="h-3.5 w-3.5 text-red-800 animate-pulse" />
                                 </motion.div>
-                                <p>Erro 404</p>
+                                <p>{t('notFound.badge')}</p>
                             </motion.div>
 
                             <motion.p
@@ -64,7 +67,7 @@ export function NotFoundPage() {
                                 transition={{ ...baseTransition, delay: 0.08 }}
                                 className="mt-4 max-w-lg text-2xl font-medium uppercase tracking-[0.2em] text-foreground sm:text-3xl"
                             >
-                                Esta rota não existe no portfólio
+                                {t('notFound.title')}
                             </motion.h1>
 
                             <motion.p
@@ -72,8 +75,7 @@ export function NotFoundPage() {
                                 transition={{ ...baseTransition, delay: 0.12 }}
                                 className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground text-justify sm:text-base"
                             >
-                                A página que voce tentou acessar nao foi encontrada. O endereço pode
-                                ter sido digitado incorretamente, removido ou ainda não foi publicado.
+                                {t('notFound.description')}
                             </motion.p>
 
                             <motion.div
@@ -89,7 +91,7 @@ export function NotFoundPage() {
                                     className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-xs font-medium uppercase tracking-[0.22em] text-muted-foreground transition hover:bg-muted hover:text-foreground"
                                 >
                                     <ArrowLeft className="h-4 w-4" />
-                                    Página anterior
+                                    {t('notFound.back')}
                                 </motion.button>
                             </motion.div>
                         </div>
@@ -101,7 +103,7 @@ export function NotFoundPage() {
                         >
                             <div>
                                 <p className="text-[0.65rem] uppercase tracking-[0.24em] text-muted-foreground">
-                                    Caminho acessado
+                                    {t('notFound.pathLabel')}
                                 </p>
                                 <motion.p
                                     initial={{ opacity: 0, x: 10 }}
@@ -115,7 +117,7 @@ export function NotFoundPage() {
 
                             <div className="space-y-3">
                                 <p className="text-[0.65rem] uppercase tracking-[0.24em] text-muted-foreground">
-                                    Sugestões
+                                    {t('notFound.suggestionsLabel')}
                                 </p>
 
                                 <motion.ul
@@ -124,12 +126,15 @@ export function NotFoundPage() {
                                     animate="visible"
                                     className="space-y-2 text-sm leading-relaxed text-muted-foreground"
                                 >
-                                    <motion.li variants={fadeUp} transition={{ ...baseTransition, delay: 0.3 }}>
-                                        Confira se o link foi digitado corretamente.
-                                    </motion.li>
-                                    <motion.li variants={fadeUp} transition={{ ...baseTransition, delay: 0.34 }}>
-                                        Use o menu principal para voltar a uma seção válida.
-                                    </motion.li>
+                                    {suggestions.map((suggestion, index) => (
+                                        <motion.li
+                                            key={suggestion}
+                                            variants={fadeUp}
+                                            transition={{ ...baseTransition, delay: 0.3 + index * 0.04 }}
+                                        >
+                                            {suggestion}
+                                        </motion.li>
+                                    ))}
                                 </motion.ul>
                             </div>
                         </motion.aside>

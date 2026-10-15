@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
-export function DeviceFrame({ url }) {
+export function DeviceFrame({ url, title }) {
+    const { t } = useTranslation();
     const [error, setError] = useState(false);
 
     return (
@@ -21,6 +23,7 @@ export function DeviceFrame({ url }) {
                 <div className="h-[calc(100%-32px)] overflow-y-auto">
                     <iframe
                         src={url}
+                        title={t("projects.previewTitle", { title })}
                         className="
                     w-full 
                     h-[1200px] 
@@ -34,7 +37,7 @@ export function DeviceFrame({ url }) {
                 </div>
             ) : (
                 <div className="flex items-center justify-center h-full text-sm text-muted-foreground">
-                    Preview indisponível
+                    {t("projects.previewUnavailable")}
                 </div>
             )}
         </motion.div>

@@ -1,11 +1,15 @@
 import { professionalTimeline, learningTimeline } from '../../data/site'
 import { SectionHeader } from '../ui/SectionHeader'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import { useLocalized } from '../../hooks/useLocalized'
 import { fadeUpSlow, baseTransition, staggerContainer } from '../../motionConfig'
 
 // timeline genérica para utilizar duas
 
 function Timeline({ data }) {
+  const { l } = useLocalized()
+
   return (
     <motion.div
       className="relative"
@@ -45,10 +49,10 @@ function Timeline({ data }) {
 
             <div className="space-y-1">
               <p className="text-[0.7rem] uppercase tracking-[0.25em] text-muted-foreground">
-                {number}. {title}
+                {number}. {l(title)}
               </p>
               <p className="max-w-xl text-[0.8rem] leading-relaxed text-muted-foreground">
-                {description}
+                {l(description)}
               </p>
             </div>
           </motion.div>
@@ -59,14 +63,16 @@ function Timeline({ data }) {
 }
 
 export function ProcessTimeline() {
+  const { t } = useTranslation()
+
   return (
     <section className="border-b border-border/60 bg-background">
       <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-0 lg:py-16">
-        
+
         <SectionHeader
-          eyebrow="Trajetória"
-          title="Minha jornada"
-          description="Uma visão da minha experiência prática e evolução no desenvolvimento de software."
+          eyebrow={t('timeline.eyebrow')}
+          title={t('timeline.title')}
+          description={t('timeline.description')}
         />
 
         <div className="grid gap-12 md:grid-cols-2">
@@ -74,7 +80,7 @@ export function ProcessTimeline() {
           {/* EXPERIÊNCIA */}
           <div className="space-y-4 text-justify">
             <p className="text-[0.8rem] uppercase tracking-[0.3em] text-muted-foreground">
-              Experiência
+              {t('timeline.experience')}
             </p>
             <Timeline data={professionalTimeline} />
           </div>
@@ -82,7 +88,7 @@ export function ProcessTimeline() {
           {/* APRENDIZADO */}
           <div className="space-y-4 text-justify">
             <p className="text-[0.8rem] uppercase tracking-[0.3em] text-muted-foreground">
-              Aprendizado
+              {t('timeline.learning')}
             </p>
             <Timeline data={learningTimeline} />
           </div>

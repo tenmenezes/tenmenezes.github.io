@@ -1,30 +1,25 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { projects } from '../data/projects'
+import { useLocalized } from '../hooks/useLocalized'
 import { SmallBadge } from '../components/ui/Badge'
 import { DotPattern } from '../components/ui/dot-pattern'
 import { DeviceFrame } from '@/components/ui/DeviceFrame'
 
 export function ProjectDetailPage() {
   const { slug } = useParams()
+  const { t } = useTranslation()
+  const { l } = useLocalized()
   const project = projects.find((p) => p.slug === slug)
 
   if (!project) return <Navigate to="/projects" replace />
 
-  const {
-    title,
-    role,
-    year,
-    tags,
-    summary,
-    description,
-    details,
-    highlights,
-    preview,
-    previewPosition,
-    liveURL,
-    githubURL,
-  } = project
+  const { role, year, tags, details, preview, previewPosition, liveURL, githubURL } = project
+  const title = l(project.title)
+  const summary = l(project.summary)
+  const description = l(project.description)
+  const highlights = l(project.highlights)
 
   return (
     <main className="bg-background">
@@ -40,7 +35,7 @@ export function ProjectDetailPage() {
             className="mb-8 inline-flex items-center gap-2 text-[0.65rem] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="h-3 w-3" />
-            Todos os projetos
+            {t('projects.backToAll')}
           </Link>
 
           <div className="flex flex-wrap items-start justify-between gap-6">
@@ -63,9 +58,9 @@ export function ProjectDetailPage() {
 
             <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-[0.65rem] uppercase tracking-[0.2em]">
               {details.map(({ label, value }) => (
-                <div key={label} className="space-y-1">
-                  <div className="text-muted-foreground/70">{label}</div>
-                  <div className="text-foreground">{value}</div>
+                <div key={l(label)} className="space-y-1">
+                  <div className="text-muted-foreground/70">{l(label)}</div>
+                  <div className="text-foreground">{l(value)}</div>
                 </div>
               ))}
             </div>
@@ -80,7 +75,7 @@ export function ProjectDetailPage() {
             <div className="space-y-6 lg:col-span-2">
               <div className="space-y-4">
                 <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
-                  Visão geral
+                  {t('projects.overview')}
                 </p>
                 <p className="text-sm leading-relaxed text-muted-foreground text-justify">
                   {description}
@@ -97,7 +92,7 @@ export function ProjectDetailPage() {
                     className="inline-flex items-center gap-2 rounded-md border border-border bg-foreground px-5 py-2.5 text-[0.65rem] uppercase tracking-[0.2em] text-background transition hover:opacity-90"
                   >
                     <ExternalLink className="h-3.5 w-3.5" />
-                    Visitar Projeto
+                    {t('projects.visit')}
                   </a>
                 )}
                 {githubURL && (
@@ -108,7 +103,7 @@ export function ProjectDetailPage() {
                     className="inline-flex items-center gap-2 rounded-md border border-border bg-background px-5 py-2.5 text-[0.65rem] uppercase tracking-[0.2em] text-foreground transition hover:bg-muted"
                   >
                     <Github className="h-3.5 w-3.5" />
-                    Código Fonte
+                    {t('projects.sourceCode')}
                   </a>
                 )}
               </div>
@@ -116,7 +111,7 @@ export function ProjectDetailPage() {
 
             <div className="space-y-4">
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-muted-foreground">
-                Destaques
+                {t('projects.highlights')}
               </p>
               <ul className="space-y-3">
                 {highlights.map((h) => (
@@ -143,7 +138,7 @@ export function ProjectDetailPage() {
                 <>
                   {/* Desktop Frame */}
                   <div className="hidden md:block h-full">
-                    <DeviceFrame url={liveURL} />
+                    <DeviceFrame url={liveURL} title={title} />
                   </div>
                   {/* Mobile Static Image (Melhor para performance e scroll) */}
                   <div className="block md:hidden h-full">
