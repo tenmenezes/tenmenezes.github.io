@@ -63,8 +63,7 @@ const pt = {
     highlights: 'Destaques',
     visit: 'Visitar Projeto',
     sourceCode: 'Código Fonte',
-    previewUnavailable: 'Preview indisponível',
-    previewTitle: 'Prévia ao vivo de {{title}}',
+    mockupAlt: 'Prints de {{title}} em um navegador e em um celular',
   },
   timeline: {
     eyebrow: 'Trajetória',

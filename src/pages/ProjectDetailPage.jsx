@@ -5,7 +5,10 @@ import { projects } from '../data/projects'
 import { useLocalized } from '../hooks/useLocalized'
 import { SmallBadge } from '../components/ui/Badge'
 import { DotPattern } from '../components/ui/dot-pattern'
-import { DeviceFrame } from '@/components/ui/DeviceFrame'
+import { Safari } from '@/components/ui/safari'
+import { Iphone } from '@/components/ui/iphone'
+import { motion } from 'framer-motion'
+import { baseTransition } from '../motionConfig'
 
 export function ProjectDetailPage() {
   const { slug } = useParams()
@@ -15,7 +18,9 @@ export function ProjectDetailPage() {
 
   if (!project) return <Navigate to="/projects" replace />
 
-  const { role, year, tags, details, preview, previewPosition, liveURL, githubURL } = project
+  const { role, year, tags, details, preview, liveURL, githubURL } = project
+  // endereço exibido na barra do mockup, sem protocolo e barra final
+  const displayURL = liveURL?.replace(/^https?:\/\//, '').replace(/\/$/, '')
   const title = l(project.title)
   const summary = l(project.summary)
   const description = l(project.description)
@@ -129,35 +134,34 @@ export function ProjectDetailPage() {
         </div>
       </section>
 
-      {/* Preview Section - Simplificada para evitar bugs de scroll */}
+      {/* Preview: print do site no ar dentro dos mockups de navegador e celular */}
       <section className="bg-muted/5 py-12 lg:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-0">
-          <div className="relative overflow-hidden rounded-xl border border-border/60 bg-background shadow-2xl">
-            <div className="aspect-video w-full overflow-hidden">
-              {liveURL ? (
-                <>
-                  {/* Desktop Frame */}
-                  <div className="hidden md:block h-full">
-                    <DeviceFrame url={liveURL} title={title} />
-                  </div>
-                  {/* Mobile Static Image (Melhor para performance e scroll) */}
-                  <div className="block md:hidden h-full">
-                    <img
-                      src={preview}
-                      alt={title}
-                      className={`h-full w-full object-cover ${previewPosition ?? "object-center"}`}
-                    />
-                  </div>
-                </>
-              ) : (
-                <img
-                  src={preview}
-                  alt={title}
-                  className={`h-full w-full object-cover ${previewPosition ?? "object-center"}`}
-                />
-              )}
-            </div>
-          </div>
+          <figure
+            role="img"
+            aria-label={t('projects.mockupAlt', { title })}
+            className="relative pb-[8%] pr-[10%]"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={baseTransition}
+              className="drop-shadow-2xl"
+            >
+              <Safari url={displayURL} imageSrc={preview.desktop} />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ ...baseTransition, delay: 0.15 }}
+              className="absolute bottom-0 right-0 w-[24%] drop-shadow-2xl sm:w-[20%]"
+            >
+              <Iphone src={preview.mobile} />
+            </motion.div>
+          </figure>
         </div>
       </section>
     </main>

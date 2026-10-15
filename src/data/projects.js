@@ -1,64 +1,21 @@
-import agentia from '../assets/agentIa.png'
-import systemcheck from '../assets/systemcheck.png'
-import brandify from '../assets/brandify.png'
-import fourplayers from '../assets/fourplayers.png'
+// Prints dos sites no ar, exibidos nos mockups de navegador (desktop) e celular (mobile)
+import systemcheckDesktop from '../assets/mockups/system-check-desktop.jpg'
+import systemcheckMobile from '../assets/mockups/system-check-mobile.jpg'
+import brandifyDesktop from '../assets/mockups/brandify-desktop.jpg'
+import brandifyMobile from '../assets/mockups/brandify-mobile.jpg'
+import fourplayersDesktop from '../assets/mockups/4players-desktop.jpg'
+import fourplayersMobile from '../assets/mockups/4players-mobile.jpg'
 
 // Campos traduzíveis usam { pt, en } e são resolvidos pelo hook useLocalized
 
 export const projects = [
-  {
-    slug: 'agent-ia',
-    title: { pt: 'Agente de RoadMap', en: 'RoadMap Agent' },
-    role: 'Fullstack',
-    year: '2025',
-    tags: ['Next.js', 'Zod', 'OpenAI API'],
-    preview: agentia,
-    previewPosition: 'object-center',
-    githubURL: 'https://github.com/tenmenezes/agentIA',
-    liveURL: 'https://agent-ia-beta.vercel.app',
-    summary: {
-      pt: 'Aplicação full-stack desenvolvida para gerar roadmaps personalizados com IA, criando rotas de estudo sob medida para cada usuário e permitindo exportação do resultado em PDF.',
-      en: 'Full-stack application built to generate personalized AI roadmaps, creating tailored study paths for each user and allowing the result to be exported as PDF.',
-    },
-    description: {
-      pt: 'O Agente IA foi desenvolvido com Next.js, TypeScript, Zod, OpenAI API e Tailwind CSS, integrando front-end e lógica de geração em uma única aplicação. A versão online utiliza API Routes no Next.js para processar a geração do roadmap, retornando respostas em streaming Markdown com formatação automática.',
-      en: 'The AI Agent was built with Next.js, TypeScript, Zod, OpenAI API and Tailwind CSS, bringing the front-end and generation logic together in a single application. The online version uses Next.js API Routes to process roadmap generation, returning streamed Markdown responses with automatic formatting.',
-    },
-    details: [
-      { label: { pt: 'Tipo', en: 'Type' }, value: { pt: 'Aplicação Web com IA', en: 'AI Web Application' } },
-      { label: { pt: 'Stack', en: 'Stack' }, value: 'Next.js, TypeScript, Zod, OpenAI API, Tailwind CSS' },
-      {
-        label: { pt: 'Escopo', en: 'Scope' },
-        value: {
-          pt: 'Geração de roadmaps personalizados com exportação em PDF',
-          en: 'Personalized roadmap generation with PDF export',
-        },
-      },
-      { label: { pt: 'Ano', en: 'Year' }, value: '2025' },
-    ],
-    highlights: {
-      pt: [
-        'Geração inteligente de roadmaps personalizados com IA',
-        'Arquitetura full-stack centralizada em Next.js com API Routes',
-        'Respostas em streaming Markdown com formatação automática',
-        'Validação de dados com Zod e interface moderna com Tailwind CSS',
-      ],
-      en: [
-        'Smart generation of personalized roadmaps with AI',
-        'Full-stack architecture centralized in Next.js with API Routes',
-        'Streamed Markdown responses with automatic formatting',
-        'Data validation with Zod and a modern interface with Tailwind CSS',
-      ],
-    },
-  },
   {
     slug: 'system-check',
     title: 'System Check',
     role: 'Frontend',
     year: '2025',
     tags: ['Next.js', 'Tailwind CSS', 'AOS.js'],
-    preview: systemcheck,
-    previewPosition: 'object-left',
+    preview: { desktop: systemcheckDesktop, mobile: systemcheckMobile },
     githubURL: 'https://github.com/tenmenezes/SystemCheck',
     liveURL: 'https://systemcheck.vercel.app/',
     summary: {
@@ -102,8 +59,7 @@ export const projects = [
     role: 'Frontend',
     year: '2025',
     tags: ['React', 'Tailwind CSS', 'Framer Motion'],
-    preview: brandify,
-    previewPosition: 'object-left',
+    preview: { desktop: brandifyDesktop, mobile: brandifyMobile },
     githubURL: 'https://github.com/tenmenezes/Brandify',
     liveURL: 'https://tenmenezes.github.io/Brandify',
     summary: {
@@ -150,8 +106,7 @@ export const projects = [
     role: 'Frontend',
     year: '2025',
     tags: ['HTML5 / CSS3 / JS', 'LocalStorage'],
-    preview: fourplayers,
-    previewPosition: 'object-center',
+    preview: { desktop: fourplayersDesktop, mobile: fourplayersMobile },
     githubURL: 'https://github.com/tenmenezes/4Players',
     liveURL: 'https://tenmenezes.github.io/4Players',
     summary: {

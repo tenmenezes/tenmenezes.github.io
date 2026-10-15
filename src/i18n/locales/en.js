@@ -63,8 +63,7 @@ const en = {
     highlights: 'Highlights',
     visit: 'Visit Project',
     sourceCode: 'Source Code',
-    previewUnavailable: 'Preview unavailable',
-    previewTitle: 'Live preview of {{title}}',
+    mockupAlt: 'Screenshots of {{title}} in a browser and on a phone',
   },
   timeline: {
     eyebrow: 'Path',

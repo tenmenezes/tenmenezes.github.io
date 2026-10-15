@@ -120,4 +120,4 @@ export const learningTimeline = [
   },
 ]
 
-export const clients = ['SystemCheck', 'RoadMap Agent', 'Brandify']
+export const clients = ['SystemCheck', 'Brandify', '4 Players']
