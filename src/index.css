@@ -94,8 +94,8 @@
   }
   /* Scrollbar padronizada com o tema (fina, cantos discretos, tons do sistema) */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -104,8 +104,8 @@
 
   ::-webkit-scrollbar-thumb {
     background-color: hsl(var(--muted-foreground) / 0.35);
-    border-radius: 3px;
-    border: 2px solid hsl(var(--background));
+    border-radius: 1px;
+    border: 1px solid hsl(var(--background));
   }
 
   ::-webkit-scrollbar-thumb:hover {
